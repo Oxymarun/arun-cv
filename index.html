@@ -88,6 +88,11 @@
 
         .reveal { opacity: 0; }
         .reveal.visible { animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) forwards; }
+
+        .tl-left  { opacity:0; transform: translateX(-60px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+        .tl-right { opacity:0; transform: translateX(60px);  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+        .tl-left.tl-visible, .tl-right.tl-visible { opacity:1; transform: translateX(0); }
+        #tl-line-fill { transition: height 0.1s linear; }
         .delay-1 { animation-delay: 100ms; }
         .delay-2 { animation-delay: 200ms; }
         .delay-3 { animation-delay: 300ms; }
@@ -558,6 +563,110 @@
             </div>
         </section>
 
+        <!-- CAREER JOURNEY TIMELINE -->
+        <section id="journey" class="py-20 md:py-28 border-b border-str relative overflow-hidden">
+            <div class="max-w-[1400px] mx-auto px-6 md:px-10">
+                <h2 class="text-3xl md:text-4xl font-black uppercase tracking-[0.1em] border-b border-str pb-3 mb-16 reveal"><span class="text-cyan">05/</span> <span class="text-white">Career Journey</span></h2>
+
+                <!-- Timeline container -->
+                <div class="relative" id="tl-container">
+                    <!-- Growing fill line -->
+                    <div class="absolute left-1/2 top-0 w-px bg-str -translate-x-1/2 h-full hidden md:block"></div>
+                    <div id="tl-line-fill" class="absolute left-1/2 top-0 w-px bg-brand -translate-x-1/2 h-0 hidden md:block" style="z-index:1"></div>
+                    <!-- Mobile line -->
+                    <div class="absolute left-4 top-0 w-px bg-str h-full block md:hidden"></div>
+
+                    <div class="space-y-12 md:space-y-0">
+
+                        <!-- 2013 NITK -->
+                        <div class="relative flex md:justify-end md:pr-[calc(50%+2rem)] pl-10 md:pl-0 tl-left">
+                            <div class="bg-bg-card border border-str p-5 md:max-w-xs w-full hover:border-brand transition-colors group">
+                                <div class="text-xs text-cyan font-bold uppercase tracking-[0.15em] mb-1">Education</div>
+                                <div class="text-xs text-brand font-bold uppercase tracking-[0.12em] mb-2">2013 — 2017</div>
+                                <h4 class="text-base font-black uppercase group-hover:text-brand transition-colors">NITK Surathkal</h4>
+                                <p class="text-txt-secondary text-sm mt-1">B.Tech — Silver Medalist</p>
+                            </div>
+                            <div class="absolute left-[calc(50%-5px)] top-5 w-2.5 h-2.5 rounded-full bg-brand border-2 border-bg-base hidden md:block" style="z-index:2"></div>
+                            <div class="absolute left-[14px] top-5 w-2.5 h-2.5 rounded-full bg-brand border-2 border-bg-base block md:hidden"></div>
+                        </div>
+
+                        <!-- 2017 Novartis -->
+                        <div class="relative flex md:justify-start md:pl-[calc(50%+2rem)] pl-10 md:pl-[calc(50%+2rem)] tl-right md:mt-[-60px]" style="margin-top:3rem">
+                            <div class="bg-bg-surface border border-str p-5 md:max-w-xs w-full hover:border-brand transition-colors group">
+                                <div class="text-xs text-txt-muted font-bold uppercase tracking-[0.15em] mb-1">Work</div>
+                                <div class="text-xs text-brand font-bold uppercase tracking-[0.12em] mb-2">2017 — 2019</div>
+                                <h4 class="text-base font-black uppercase group-hover:text-brand transition-colors">Novartis</h4>
+                                <p class="text-txt-secondary text-sm mt-1">Data & Strategy Analyst</p>
+                            </div>
+                            <div class="absolute left-[calc(50%-5px)] top-5 w-2.5 h-2.5 rounded-full bg-brand border-2 border-bg-base hidden md:block" style="z-index:2"></div>
+                            <div class="absolute left-[14px] top-5 w-2.5 h-2.5 rounded-full bg-brand border-2 border-bg-base block md:hidden"></div>
+                        </div>
+
+                        <!-- 2019 IIM Calcutta -->
+                        <div class="relative flex md:justify-end md:pr-[calc(50%+2rem)] pl-10 md:pl-0 tl-left" style="margin-top:3rem">
+                            <div class="bg-bg-card border border-str p-5 md:max-w-xs w-full hover:border-brand transition-colors group">
+                                <div class="text-xs text-cyan font-bold uppercase tracking-[0.15em] mb-1">Education</div>
+                                <div class="text-xs text-brand font-bold uppercase tracking-[0.12em] mb-2">2019 — 2021</div>
+                                <h4 class="text-base font-black uppercase group-hover:text-brand transition-colors">IIM Calcutta</h4>
+                                <p class="text-txt-secondary text-sm mt-1">MBA — Institute Rank 20</p>
+                            </div>
+                            <div class="absolute left-[calc(50%-5px)] top-5 w-2.5 h-2.5 rounded-full bg-brand border-2 border-bg-base hidden md:block" style="z-index:2"></div>
+                            <div class="absolute left-[14px] top-5 w-2.5 h-2.5 rounded-full bg-brand border-2 border-bg-base block md:hidden"></div>
+                        </div>
+
+                        <!-- 2021 MPL -->
+                        <div class="relative flex md:justify-start md:pl-[calc(50%+2rem)] pl-10 md:pl-[calc(50%+2rem)] tl-right" style="margin-top:3rem">
+                            <div class="bg-bg-surface border border-str p-5 md:max-w-xs w-full hover:border-brand transition-colors group">
+                                <div class="text-xs text-txt-muted font-bold uppercase tracking-[0.15em] mb-1">Work</div>
+                                <div class="text-xs text-brand font-bold uppercase tracking-[0.12em] mb-2">2021 — 2023</div>
+                                <h4 class="text-base font-black uppercase group-hover:text-brand transition-colors">MPL</h4>
+                                <p class="text-txt-secondary text-sm mt-1">Chief of Staff, Mayhem Studios</p>
+                            </div>
+                            <div class="absolute left-[calc(50%-5px)] top-5 w-2.5 h-2.5 rounded-full bg-brand border-2 border-bg-base hidden md:block" style="z-index:2"></div>
+                            <div class="absolute left-[14px] top-5 w-2.5 h-2.5 rounded-full bg-brand border-2 border-bg-base block md:hidden"></div>
+                        </div>
+
+                        <!-- 2023 InsuranceDekho -->
+                        <div class="relative flex md:justify-end md:pr-[calc(50%+2rem)] pl-10 md:pl-0 tl-left" style="margin-top:3rem">
+                            <div class="bg-bg-card border border-str p-5 md:max-w-xs w-full hover:border-brand transition-colors group">
+                                <div class="text-xs text-txt-muted font-bold uppercase tracking-[0.15em] mb-1">Work</div>
+                                <div class="text-xs text-brand font-bold uppercase tracking-[0.12em] mb-2">2023 — 2025</div>
+                                <h4 class="text-base font-black uppercase group-hover:text-brand transition-colors">InsuranceDekho</h4>
+                                <p class="text-txt-secondary text-sm mt-1">Sr. Assoc Director / Chief of Staff</p>
+                            </div>
+                            <div class="absolute left-[calc(50%-5px)] top-5 w-2.5 h-2.5 rounded-full bg-brand border-2 border-bg-base hidden md:block" style="z-index:2"></div>
+                            <div class="absolute left-[14px] top-5 w-2.5 h-2.5 rounded-full bg-brand border-2 border-bg-base block md:hidden"></div>
+                        </div>
+
+                        <!-- 2025 PocketFM -->
+                        <div class="relative flex md:justify-start md:pl-[calc(50%+2rem)] pl-10 md:pl-[calc(50%+2rem)] tl-right" style="margin-top:3rem">
+                            <div class="bg-bg-surface border border-str p-5 md:max-w-xs w-full hover:border-brand transition-colors group">
+                                <div class="text-xs text-txt-muted font-bold uppercase tracking-[0.15em] mb-1">Work</div>
+                                <div class="text-xs text-brand font-bold uppercase tracking-[0.12em] mb-2">Aug 2025 — Feb 2026</div>
+                                <h4 class="text-base font-black uppercase group-hover:text-brand transition-colors">PocketFM</h4>
+                                <p class="text-txt-secondary text-sm mt-1">Early Strategy & Growth Leadership</p>
+                            </div>
+                            <div class="absolute left-[calc(50%-5px)] top-5 w-2.5 h-2.5 rounded-full bg-brand border-2 border-bg-base hidden md:block" style="z-index:2"></div>
+                            <div class="absolute left-[14px] top-5 w-2.5 h-2.5 rounded-full bg-brand border-2 border-bg-base block md:hidden"></div>
+                        </div>
+
+                        <!-- 2025 Physical-AI -->
+                        <div class="relative flex md:justify-end md:pr-[calc(50%+2rem)] pl-10 md:pl-0 tl-left" style="margin-top:3rem">
+                            <div class="bg-bg-card border border-str p-5 md:max-w-xs w-full hover:border-brand transition-colors group">
+                                <div class="text-xs text-txt-muted font-bold uppercase tracking-[0.15em] mb-1">Work</div>
+                                <div class="text-xs text-brand font-bold uppercase tracking-[0.12em] mb-2">Dec 2025 — Mar 2026</div>
+                                <h4 class="text-base font-black uppercase group-hover:text-brand transition-colors">Physical-AI Startup</h4>
+                                <p class="text-txt-secondary text-sm mt-1">Chief of Staff (Advisory)</p>
+                            </div>
+                            <div class="absolute left-[calc(50%-5px)] top-5 w-2.5 h-2.5 rounded-full bg-brand border-2 border-bg-base hidden md:block" style="z-index:2"></div>
+                            <div class="absolute left-[14px] top-5 w-2.5 h-2.5 rounded-full bg-brand border-2 border-bg-base block md:hidden"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- FOOTER CTA -->
         <footer class="bg-brand text-white relative pt-24 pb-12 overflow-hidden">
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none opacity-[0.08]">
@@ -596,6 +705,29 @@
             });
         }, { threshold: 0.08 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Timeline slide-in
+        const tlObserver = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('tl-visible');
+                    tlObserver.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.tl-left, .tl-right').forEach(el => tlObserver.observe(el));
+
+        // Timeline line fill on scroll
+        const tlContainer = document.getElementById('tl-container');
+        const tlFill = document.getElementById('tl-line-fill');
+        if (tlContainer && tlFill) {
+            window.addEventListener('scroll', () => {
+                const rect = tlContainer.getBoundingClientRect();
+                const total = tlContainer.offsetHeight;
+                const scrolled = Math.min(Math.max(-rect.top + window.innerHeight * 0.5, 0), total);
+                tlFill.style.height = scrolled + 'px';
+            }, { passive: true });
+        }
 
         // Scroll spy
         const sections = document.querySelectorAll('section[id], div[id]');
