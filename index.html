@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARUN SHARMA | Strategy & Operations</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bg: { base: '#0f0f0f', surface: '#1a1a1a', card: '#252525', 'card-hover': '#2d2d2d' },
+                        brand: { DEFAULT: '#0052FF', light: '#3375FF', glow: 'rgba(0,82,255,0.45)' },
+                        txt: { primary: '#FFFFFF', secondary: '#A0A0A0', muted: '#555555' },
+                        gold: { DEFAULT: '#FFD700', dim: 'rgba(255,215,0,0.12)' },
+                        cyan: { DEFAULT: '#00C2FF', dim: 'rgba(0,194,255,0.12)' },
+                    },
+                    fontFamily: {
+                        sans: ['"Inter Tight"', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        none: '0px', sm: '0px', DEFAULT: '0px', md: '0px', lg: '0px', xl: '0px', full: '9999px',
+                    },
+                    animation: {
+                        'ticker': 'ticker 40s linear infinite',
+                        'fade-up': 'fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) forwards',
+                    },
+                    keyframes: {
+                        ticker: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        },
+                        fadeUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html { scroll-padding-top: 80px; }
+        body {
+            background: #0f0f0f radial-gradient(circle at 50% 0%, #17243c 0%, #0f0f0f 50%);
+            background-attachment: fixed;
+            color: #fff;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        .border-str { border-color: rgba(255,255,255,0.08); }
+        .glass-nav {
+            background: rgba(15,15,15,0.85);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+        .ticker-wrap { overflow: hidden; white-space: nowrap; }
+        .ticker-track {
+            display: flex; width: max-content;
+            animation: ticker 40s linear infinite;
+        }
+        .ticker-track:hover { animation-play-state: paused; }
+
+        .card-wrap:hover .card-body {
+            transform: translate(6px, -6px);
+            background: #2d2d2d;
+        }
+        .card-wrap:hover .card-shadow {
+            border-color: #0052FF;
+            box-shadow: inset 0 0 0 1px #0052FF;
+        }
+        .card-body {
+            transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), background 0.4s ease;
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0f0f0f; }
+        ::-webkit-scrollbar-thumb { background: #333; }
+        ::-webkit-scrollbar-thumb:hover { background: #0052FF; }
+
+        .reveal { opacity: 0; }
+        .reveal.visible { animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) forwards; }
+        .delay-1 { animation-delay: 100ms; }
+        .delay-2 { animation-delay: 200ms; }
+        .delay-3 { animation-delay: 300ms; }
+        .delay-4 { animation-delay: 400ms; }
+
+        .nav-link.active { color: #fff; }
+
+        .expand-btn { cursor: pointer; }
+        .expand-content {
+            max-height: 0; overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.16,1,0.3,1);
+        }
+        .expand-content.open { max-height: 600px; }
+
+        @media (max-width: 768px) {
+            .mob-menu { display: none; }
+            .mob-menu.open { display: flex; }
+        }
+    </style>
+</head>
+<body class="selection:bg-brand selection:text-white">
+
+    <!-- NAV -->
+    <nav class="fixed top-0 w-full z-50 glass-nav border-b border-str">
+        <div class="max-w-[1400px] mx-auto px-6 md:px-10 flex items-center justify-between h-[72px]">
+            <div class="font-black text-sm uppercase tracking-[0.15em] flex items-center gap-2">
+                <span class="w-2.5 h-2.5 bg-brand inline-block"></span>
+                ARUN.S
+            </div>
+            <div class="hidden md:flex gap-7 text-xs font-semibold tracking-[0.1em] uppercase text-txt-secondary">
+                <a href="#experience" class="nav-link hover:text-white transition-colors py-2">Experience</a>
+                <a href="#skills" class="nav-link hover:text-white transition-colors py-2">Skills</a>
+                <a href="#education" class="nav-link hover:text-white transition-colors py-2">Education</a>
+                <a href="#about" class="nav-link hover:text-white transition-colors py-2">About</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="./Arun_IIMC_Strategy.pdf" download class="hidden md:inline-block bg-brand text-white font-bold px-5 py-2 text-xs uppercase tracking-wider hover:bg-brand-light hover:shadow-[0_0_20px_rgba(0,82,255,0.35)] transition-all">
+                    Download CV
+                </a>
+                <button id="hamburger" class="md:hidden text-white text-xl" onclick="document.getElementById('mobMenu').classList.toggle('open')">
+                    <i class="ph ph-list"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobMenu" class="mob-menu flex-col gap-4 px-6 pb-6 text-sm font-semibold uppercase tracking-wider text-txt-secondary md:hidden">
+            <a href="#experience" class="hover:text-white" onclick="document.getElementById('mobMenu').classList.remove('open')">Experience</a>
+            <a href="#skills" class="hover:text-white" onclick="document.getElementById('mobMenu').classList.remove('open')">Skills</a>
+            <a href="#education" class="hover:text-white" onclick="document.getElementById('mobMenu').classList.remove('open')">Education</a>
+            <a href="#about" class="hover:text-white" onclick="document.getElementById('mobMenu').classList.remove('open')">About</a>
+            <a href="./Arun_IIMC_Strategy.pdf" download class="text-brand font-bold">Download CV</a>
+        </div>
+    </nav>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="relative min-h-screen flex flex-col justify-end pt-28 pb-0 border-b border-str">
+            <div class="absolute top-0 right-0 w-1/2 h-[70vh] bg-gradient-to-bl from-brand/10 to-transparent -z-10 pointer-events-none"></div>
+
+            <div class="max-w-[1400px] mx-auto w-full px-6 md:px-10 flex-grow flex flex-col justify-center">
+                <div class="max-w-4xl space-y-5 md:space-y-7">
+                    <div class="flex flex-col gap-3 animate-fade-up">
+                        <div class="inline-flex items-center gap-2 w-fit">
+                            <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                            <span class="text-green-400 font-bold tracking-[0.15em] uppercase text-[10px]">Available Now</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="h-px bg-brand w-10 md:w-20"></div>
+                            <span class="text-brand font-semibold tracking-[0.15em] uppercase text-xs md:text-sm">Chief of Staff / Strategy & Growth / 0-to-1</span>
+                        </div>
+                    </div>
+
+                    <h1 class="text-5xl sm:text-7xl md:text-[120px] leading-[0.9] font-black tracking-tight uppercase animate-fade-up" style="animation-delay:100ms">
+                        Arun<br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-txt-secondary">Sharma.</span>
+                    </h1>
+
+                    <p class="text-txt-secondary text-lg md:text-xl max-w-2xl font-light leading-relaxed animate-fade-up" style="animation-delay:200ms">
+                        Strategy operator who scales 0-to-1 bets into P&L-owning businesses. Built cross-sell to
+                        <span class="text-white font-medium border-b border-brand">&#8377;100+ Cr AGWP</span>, closed
+                        <span class="text-gold font-bold">$20M Series A</span> with Sequoia, scaled micro-drama to
+                        <span class="text-gold font-bold">$1.5M MRR</span> in 4 months.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4 pt-2 animate-fade-up" style="animation-delay:300ms">
+                        <a href="mailto:aruns2021@email.iimcal.ac.in" class="text-txt-secondary hover:text-white text-sm flex items-center gap-2 transition-colors">
+                            <i class="ph ph-envelope-simple text-brand"></i> aruns2021@email.iimcal.ac.in
+                        </a>
+                        <a href="tel:+919663338493" class="text-txt-secondary hover:text-white text-sm flex items-center gap-2 transition-colors">
+                            <i class="ph ph-phone text-brand"></i> +91-9663338493
+                        </a>
+                        <a href="https://www.linkedin.com/in/arun-sharma-a9a229103" target="_blank" class="text-txt-secondary hover:text-white text-sm flex items-center gap-2 transition-colors">
+                            <i class="ph ph-linkedin-logo text-brand"></i> LinkedIn
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TICKER -->
+            <div class="mt-auto pt-12 animate-fade-up" style="animation-delay:400ms">
+                <div class="border-y border-brand bg-brand/5 py-3">
+                    <div class="ticker-wrap">
+                        <div class="ticker-track font-black text-2xl md:text-4xl uppercase tracking-[0.08em]">
+                            <span class="mx-6 md:mx-8 text-gold">$1.5M MRR in 4 months</span>
+                            <span class="mx-6 md:mx-8 text-brand">&#8226;</span>
+                            <span class="mx-6 md:mx-8 text-gold">$20M Series A</span>
+                            <span class="mx-6 md:mx-8 text-brand">&#8226;</span>
+                            <span class="mx-6 md:mx-8 text-brand">&#8377;100+ Cr AGWP</span>
+                            <span class="mx-6 md:mx-8 text-brand">&#8226;</span>
+                            <span class="mx-6 md:mx-8 text-white">500K DAU</span>
+                            <span class="mx-6 md:mx-8 text-brand">&#8226;</span>
+                            <span class="mx-6 md:mx-8 text-white">1.7M+ DAU IPL Fantasy</span>
+                            <span class="mx-6 md:mx-8 text-brand">&#8226;</span>
+                            <span class="mx-6 md:mx-8 text-white">500M+ Organic Views</span>
+                            <span class="mx-6 md:mx-8 text-brand">&#8226;</span>
+                            <span class="mx-6 md:mx-8 text-cyan">IIM Calcutta Rank 20</span>
+                            <span class="mx-6 md:mx-8 text-brand">&#8226;</span>
+                            <span class="mx-6 md:mx-8 text-cyan">Everest Base Camp 5364m</span>
+                            <span class="mx-6 md:mx-8 text-brand">&#8226;</span>
+                            <!-- duplicate for seamless loop -->
+                            <span class="mx-6 md:mx-8 text-gold">$1.5M MRR in 4 months</span>
+                            <span class="mx-6 md:mx-8 text-brand">&#8226;</span>
+                            <span class="mx-6 md:mx-8 text-gold">$20M Series A</span>
+                            <span class="mx-6 md:mx-8 text-brand">&#8226;</span>
+                            <span class="mx-6 md:mx-8 text-brand">&#8377;100+ Cr AGWP</span>
+                            <span class="mx-6 md:mx-8 text-brand">&#8226;</span>
+                            <span class="mx-6 md:mx-8 text-white">500K DAU</span>
+                            <span class="mx-6 md:mx-8 text-brand">&#8226;</span>
+                            <span class="mx-6 md:mx-8 text-white">1.7M+ DAU IPL Fantasy</span>
+                            <span class="mx-6 md:mx-8 text-brand">&#8226;</span>
+                            <span class="mx-6 md:mx-8 text-white">500M+ Organic Views</span>
+                            <span class="mx-6 md:mx-8 text-brand">&#8226;</span>
+                            <span class="mx-6 md:mx-8 text-cyan">IIM Calcutta Rank 20</span>
+                            <span class="mx-6 md:mx-8 text-brand">&#8226;</span>
+                            <span class="mx-6 md:mx-8 text-cyan">Everest Base Camp 5364m</span>
+                            <span class="mx-6 md:mx-8 text-brand">&#8226;</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- METRICS BAR -->
+        <section class="border-b border-str bg-bg-surface">
+            <div class="max-w-[1400px] mx-auto px-6 md:px-10">
+                <div class="grid grid-cols-2 md:grid-cols-4">
+                    <div class="py-8 px-6 text-center border-r border-b md:border-b-0 border-str group hover:bg-white/5 transition-colors">
+                        <div class="text-3xl md:text-4xl font-black text-gold"><span class="counter" data-target="9">0</span>+</div>
+                        <div class="text-txt-secondary text-[10px] uppercase tracking-[0.15em] mt-1.5 group-hover:text-white transition-colors">Years Experience</div>
+                    </div>
+                    <div class="py-8 px-6 text-center border-b md:border-b-0 md:border-r border-str group hover:bg-white/5 transition-colors">
+                        <div class="text-3xl md:text-4xl font-black text-white">$<span class="counter" data-target="20">0</span>M+</div>
+                        <div class="text-txt-secondary text-[10px] uppercase tracking-[0.15em] mt-1.5 group-hover:text-white transition-colors">Capital Raised</div>
+                    </div>
+                    <div class="py-8 px-6 text-center border-r border-str group hover:bg-white/5 transition-colors">
+                        <div class="text-3xl md:text-4xl font-black text-gold">$<span class="counter" data-target="1.5" data-decimals="1">0</span>M</div>
+                        <div class="text-txt-secondary text-[10px] uppercase tracking-[0.15em] mt-1.5 group-hover:text-white transition-colors">MRR Scaled</div>
+                    </div>
+                    <div class="py-8 px-6 text-center group hover:bg-white/5 transition-colors">
+                        <div class="text-3xl md:text-4xl font-black text-cyan">Rank <span class="counter" data-target="20">0</span></div>
+                        <div class="text-txt-secondary text-[10px] uppercase tracking-[0.15em] mt-1.5 group-hover:text-white transition-colors">IIM Calcutta / 480</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section id="experience" class="py-20 md:py-28 border-b border-str">
+            <div class="max-w-[1400px] mx-auto px-6 md:px-10">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-20 border-b border-str pb-6">
+                    <h2 class="text-4xl md:text-[72px] font-black uppercase leading-none reveal"><span class="text-cyan">01/</span> Experience</h2>
+                    <p class="text-txt-secondary font-semibold tracking-[0.12em] uppercase text-xs mt-3 md:mt-0 reveal delay-1">Career Trajectory // 9+ Years</p>
+                </div>
+
+                <div class="space-y-10 relative">
+                    <!-- Timeline Line -->
+                    <div class="hidden xl:block absolute left-[25%] top-8 bottom-8 w-px bg-str -translate-x-[24px]"></div>
+
+                    <!-- POCKETFM -->
+                    <article class="card-wrap relative group reveal">
+                        <div class="absolute inset-0 bg-brand/5 border border-str card-shadow transition-all translate-x-2 translate-y-2 group-hover:translate-x-3 group-hover:translate-y-3"></div>
+                        <div class="card-body relative z-10 bg-bg-card border border-str p-6 md:p-10 flex flex-col xl:flex-row gap-8 xl:gap-16">
+                            <div class="xl:w-1/4">
+                                <div class="text-6xl font-black text-white/10 mb-4 relative bg-bg-card inline-block">01</div>
+                                <div class="text-xs text-brand font-bold uppercase tracking-[0.12em] mb-1">Aug 2025 — Feb 2026</div>
+                                <h3 class="text-2xl font-black uppercase flex items-center gap-2"><i class="ph ph-headphones text-brand"></i> PocketFM</h3>
+                                <p class="text-txt-secondary text-sm mt-1">Early Strategy & Growth Leadership</p>
+                            </div>
+                            <div class="xl:w-3/4">
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="border border-brand text-brand px-3 py-1 text-xs font-bold uppercase tracking-wider bg-brand/10">$1.5M MRR</span>
+                                    <span class="border border-white/15 text-white px-3 py-1 text-xs font-bold uppercase tracking-wider">500K DAU</span>
+                                    <span class="border border-white/15 text-white px-3 py-1 text-xs font-bold uppercase tracking-wider">40-Member Team</span>
+                                    <span class="border border-white/15 text-white px-3 py-1 text-xs font-bold uppercase tracking-wider">500M+ Views</span>
+                                </div>
+                                <div class="space-y-3 text-txt-secondary text-sm font-light">
+                                    <p class="border-l-2 border-brand pl-4">Scaled micro-drama vertical to $1.5M MRR and 500K DAU in 4 months as part of early strategy & growth leadership team.</p>
+                                    <p class="border-l-2 border-transparent pl-4">Led 40-member cross-functional team to deploy "Promo Cracking Engine" — drove 50% increase in paid spend efficiency across 20+ shows.</p>
+                                </div>
+                                <button class="expand-btn text-cyan text-xs font-bold uppercase tracking-[0.12em] mt-4 flex items-center gap-2 hover:text-white transition-colors" onclick="toggleExpand(this)">
+                                    Explore <i class="ph ph-caret-down text-sm transition-transform"></i>
+                                </button>
+                                <div class="expand-content text-txt-secondary text-sm font-light space-y-3 mt-3">
+                                    <p class="border-l-2 border-transparent pl-4">Owned Content Marketing for PocketTV — scaled Instagram, YouTube & FB to 500M+ organic views and ad-revenue to $15K/month.</p>
+                                    <p class="border-l-2 border-transparent pl-4">Setup 30-member Indian Commissioning & Content Editorial team for PocketFM US's flagship Romantasy category ($50M ARR).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- INSURANCEDEKHO -->
+                    <article class="card-wrap relative group reveal delay-1">
+                        <div class="absolute inset-0 bg-brand/5 border border-str card-shadow transition-all translate-x-2 translate-y-2 group-hover:translate-x-3 group-hover:translate-y-3"></div>
+                        <div class="card-body relative z-10 bg-bg-surface border border-str p-6 md:p-10 flex flex-col xl:flex-row gap-8 xl:gap-16">
+                            <div class="xl:w-1/4">
+                                <div class="text-6xl font-black text-white/10 mb-4 relative bg-bg-surface inline-block">02</div>
+                                <div class="text-xs text-brand font-bold uppercase tracking-[0.12em] mb-1">Aug 2023 — Jul 2025</div>
+                                <h3 class="text-2xl font-black uppercase flex items-center gap-2"><i class="ph ph-shield-check text-brand"></i> InsuranceDekho</h3>
+                                <p class="text-txt-secondary text-sm mt-1">Sr. Assoc Director / Chief of Staff</p>
+                            </div>
+                            <div class="xl:w-3/4">
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="border border-brand text-brand px-3 py-1 text-xs font-bold uppercase tracking-wider bg-brand/10">&#8377;100+ Cr AGWP</span>
+                                    <span class="border border-brand text-brand px-3 py-1 text-xs font-bold uppercase tracking-wider bg-brand/10">~15 Cr ARR</span>
+                                    <span class="border border-white/15 text-white px-3 py-1 text-xs font-bold uppercase tracking-wider">75+ Member Team</span>
+                                    <span class="border border-white/15 text-white px-3 py-1 text-xs font-bold uppercase tracking-wider">200K+ Agents</span>
+                                </div>
+                                <div class="space-y-3 text-txt-secondary text-sm font-light">
+                                    <p class="border-l-2 border-brand pl-4"><strong class="text-white">Cross-Sell (Biz & Ops Head):</strong> Built profitable cross-sell business from scratch — &#8377;100+ Cr AGWP & ~15 Cr ARR across 4 high-margin product lines. CEO reporting, accelerated promotion.</p>
+                                    <p class="border-l-2 border-transparent pl-4"><strong class="text-white">Central Projects:</strong> Led AOP exercises, competitive benchmarking, launch playbook adopted for 50+ high-ROI city scale-ups. OKR focus across 1500+ member sales team.</p>
+                                </div>
+                                <button class="expand-btn text-cyan text-xs font-bold uppercase tracking-[0.12em] mt-4 flex items-center gap-2 hover:text-white transition-colors" onclick="toggleExpand(this)">
+                                    Explore <i class="ph ph-caret-down text-sm transition-transform"></i>
+                                </button>
+                                <div class="expand-content text-txt-secondary text-sm font-light space-y-3 mt-3">
+                                    <p class="border-l-2 border-transparent pl-4"><strong class="text-white">Financial Services (Assoc Director):</strong> Led -1&rarr;0&rarr;1 of Digital-First lending (CCs & PLs) via 200K+ agents in PoSP model through 3 vendors with 12+ Banks & NBFCs.</p>
+                                    <p class="border-l-2 border-transparent pl-4">Revamped multi-channel agent acquisition — 6K+ channels monthly, scaling 80K&rarr;200K agents.</p>
+                                    <p class="border-l-2 border-transparent pl-4">Integrated recommendation engine to empower partner agents with personalized product suggestions.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- MPL -->
+                    <article class="card-wrap relative group reveal delay-2">
+                        <div class="absolute inset-0 bg-brand/5 border border-str card-shadow transition-all translate-x-2 translate-y-2 group-hover:translate-x-3 group-hover:translate-y-3"></div>
+                        <div class="card-body relative z-10 bg-bg-card border border-str p-6 md:p-10 flex flex-col xl:flex-row gap-8 xl:gap-16">
+                            <div class="xl:w-1/4">
+                                <div class="text-6xl font-black text-white/10 mb-4 relative bg-bg-card inline-block">03</div>
+                                <div class="text-xs text-brand font-bold uppercase tracking-[0.12em] mb-1">May 2021 — Aug 2023</div>
+                                <h3 class="text-2xl font-black uppercase flex items-center gap-2"><i class="ph ph-game-controller text-brand"></i> MPL</h3>
+                                <p class="text-txt-secondary text-sm mt-1">Chief of Staff & Strategy Lead, Mayhem Studios</p>
+                            </div>
+                            <div class="xl:w-3/4">
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="border border-brand text-brand px-3 py-1 text-xs font-bold uppercase tracking-wider bg-brand/10">$20M Series A</span>
+                                    <span class="border border-white/15 text-white px-3 py-1 text-xs font-bold uppercase tracking-wider">Sequoia Capital</span>
+                                    <span class="border border-white/15 text-white px-3 py-1 text-xs font-bold uppercase tracking-wider">1.7M+ DAU</span>
+                                    <span class="border border-white/15 text-white px-3 py-1 text-xs font-bold uppercase tracking-wider">+15% LTV</span>
+                                </div>
+                                <div class="space-y-3 text-txt-secondary text-sm font-light">
+                                    <p class="border-l-2 border-brand pl-4"><strong class="text-white">Series A:</strong> Led spin-off & closed $20M Series A from Tier 1 VCs (Sequoia, Truecaller, Hashed, Stead View) solely with CEO. Pitched 150+ global funds.</p>
+                                    <p class="border-l-2 border-transparent pl-4"><strong class="text-white">GTM:</strong> Secured distribution partnership with Truecaller. Closed deals with 10+/80 global gaming studios.</p>
+                                </div>
+                                <button class="expand-btn text-cyan text-xs font-bold uppercase tracking-[0.12em] mt-4 flex items-center gap-2 hover:text-white transition-colors" onclick="toggleExpand(this)">
+                                    Explore <i class="ph ph-caret-down text-sm transition-transform"></i>
+                                </button>
+                                <div class="expand-content text-txt-secondary text-sm font-light space-y-3 mt-3">
+                                    <p class="border-l-2 border-transparent pl-4">Owned org-wide OKR design & led Quarterly Roadmap Planning across 10+ engineering and product PODs.</p>
+                                    <p class="border-l-2 border-transparent pl-4">Led end-to-end technical program management for IPL Fantasy (1.7M+ DAU) — 10+ cross-functional dashboards.</p>
+                                    <p class="border-l-2 border-transparent pl-4">Data-driven CLM strategy: D7/D30 retention +7%/3%, monetization +15% LTV & improved ROAS.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- BCG -->
+                    <article class="card-wrap relative group reveal delay-3">
+                        <div class="absolute inset-0 bg-brand/5 border border-str card-shadow transition-all translate-x-2 translate-y-2 group-hover:translate-x-3 group-hover:translate-y-3"></div>
+                        <div class="card-body relative z-10 bg-bg-surface border border-str p-6 md:p-10 flex flex-col xl:flex-row gap-8 xl:gap-16">
+                            <div class="xl:w-1/4">
+                                <div class="text-6xl font-black text-white/10 mb-4 relative bg-bg-surface inline-block">04</div>
+                                <div class="text-xs text-brand font-bold uppercase tracking-[0.12em] mb-1">Mar 2020 — May 2020</div>
+                                <h3 class="text-2xl font-black uppercase flex items-center gap-2"><i class="ph ph-briefcase text-brand"></i> BCG</h3>
+                                <p class="text-txt-secondary text-sm mt-1">Strategy Consulting</p>
+                            </div>
+                            <div class="xl:w-3/4">
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="border border-brand text-brand px-3 py-1 text-xs font-bold uppercase tracking-wider bg-brand/10">3000+ Execs Influenced</span>
+                                    <span class="border border-white/15 text-white px-3 py-1 text-xs font-bold uppercase tracking-wider">2 NASSCOM Conferences</span>
+                                </div>
+                                <div class="space-y-3 text-txt-secondary text-sm font-light">
+                                    <p class="border-l-2 border-brand pl-4">Reimagined post-COVID GCC Strategy via in-depth interviews of 10+ CEOs, influencing 3000+ executives at 2 NASSCOM conferences.</p>
+                                    <p class="border-l-2 border-transparent pl-4">Led primary research to build GCC roadmaps for pandemic-driven shifts in digital, talent, & cost optimization.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- NOVARTIS -->
+                    <article class="card-wrap relative group reveal delay-4">
+                        <div class="absolute inset-0 bg-brand/5 border border-str card-shadow transition-all translate-x-2 translate-y-2 group-hover:translate-x-3 group-hover:translate-y-3"></div>
+                        <div class="card-body relative z-10 bg-bg-card border border-str p-6 md:p-10 flex flex-col xl:flex-row gap-8 xl:gap-16">
+                            <div class="xl:w-1/4">
+                                <div class="text-6xl font-black text-white/10 mb-4 relative bg-bg-card inline-block">05</div>
+                                <div class="text-xs text-brand font-bold uppercase tracking-[0.12em] mb-1">Jul 2017 — May 2019</div>
+                                <h3 class="text-2xl font-black uppercase flex items-center gap-2"><i class="ph ph-pill text-brand"></i> Novartis</h3>
+                                <p class="text-txt-secondary text-sm mt-1">Data & Strategy Analyst</p>
+                            </div>
+                            <div class="xl:w-3/4">
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="border border-brand text-brand px-3 py-1 text-xs font-bold uppercase tracking-wider bg-brand/10">Accelerated Promotion</span>
+                                    <span class="border border-white/15 text-white px-3 py-1 text-xs font-bold uppercase tracking-wider">$1B+ Drug Portfolio</span>
+                                    <span class="border border-white/15 text-white px-3 py-1 text-xs font-bold uppercase tracking-wider">40% Manhours Saved</span>
+                                </div>
+                                <div class="space-y-3 text-txt-secondary text-sm font-light">
+                                    <p class="border-l-2 border-brand pl-4">Built scalable segmentation framework to target 60K+ physicians across 14 US states using SAS & SQL.</p>
+                                    <p class="border-l-2 border-transparent pl-4">Led global data lake transformation — 40% manhours saved moving to Alteryx, Power BI & Tableau.</p>
+                                    <p class="border-l-2 border-transparent pl-4">Quarterly Best Project Award for one-stop CXO solution to monitor & strategize $1B+ cardio drug sales.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- ADVISORY -->
+                    <article class="card-wrap relative group reveal">
+                        <div class="absolute inset-0 bg-brand/5 border border-str card-shadow transition-all translate-x-2 translate-y-2 group-hover:translate-x-3 group-hover:translate-y-3"></div>
+                        <div class="card-body relative z-10 bg-bg-surface border border-str p-6 md:p-10 flex flex-col xl:flex-row gap-8 xl:gap-16">
+                            <div class="xl:w-1/4">
+                                <div class="text-6xl font-black text-white/10 mb-4 relative bg-bg-surface inline-block">+</div>
+                                <div class="text-xs text-brand font-bold uppercase tracking-[0.12em] mb-1">Dec 2025 — Mar 2026</div>
+                                <h3 class="text-2xl font-black uppercase flex items-center gap-2"><i class="ph ph-rocket text-brand"></i> Physical-AI Startup</h3>
+                                <p class="text-txt-secondary text-sm mt-1">Chief of Staff (Advisory) — Accel-backed</p>
+                            </div>
+                            <div class="xl:w-3/4">
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="border border-brand text-brand px-3 py-1 text-xs font-bold uppercase tracking-wider bg-brand/10">Series A Fundraise</span>
+                                    <span class="border border-white/15 text-white px-3 py-1 text-xs font-bold uppercase tracking-wider">0 &rarr; 20 Team</span>
+                                </div>
+                                <div class="space-y-3 text-txt-secondary text-sm font-light">
+                                    <p class="border-l-2 border-brand pl-4">End-to-end ownership of Series A raise for US Construction-focused Physical-AI startup. Owned VDR, investor demos, board presentations, GTM strategy.</p>
+                                    <p class="border-l-2 border-transparent pl-4">Setup company-wide OKRs, hackathons & built team from 0 to 20 across GTM, Deployment, HR & Marketing.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills" class="py-20 md:py-28 border-b border-str relative overflow-hidden">
+            <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px); background-size: 40px 40px;"></div>
+            <div class="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+                    <div class="lg:col-span-4 flex flex-col justify-center reveal">
+                        <h2 class="text-4xl md:text-[64px] font-black uppercase leading-none mb-5"><span class="text-cyan">02/</span><br>Skills</h2>
+                        <p class="text-txt-secondary text-base">Core competencies forged across consumer tech, insurance, gaming, and consulting.</p>
+                    </div>
+                    <div class="lg:col-span-8 reveal delay-1 space-y-7">
+                        <div>
+                            <div class="text-[10px] text-cyan font-bold uppercase tracking-[0.2em] mb-3">Strategy & Growth</div>
+                            <div class="flex flex-wrap gap-3">
+                                <div class="px-5 py-3 bg-brand text-white border border-brand font-bold text-sm uppercase tracking-wider">0-to-1 Scaling</div>
+                                <div class="px-5 py-3 bg-bg-card border border-brand text-brand font-bold text-sm uppercase tracking-wider bg-brand/10">GTM Strategy</div>
+                                <div class="px-5 py-3 bg-bg-card border border-str hover:border-brand hover:bg-brand/5 transition-colors text-sm uppercase font-medium tracking-wider">Fundraising (Series A-B)</div>
+                                <div class="px-5 py-3 bg-bg-card border border-str hover:border-brand hover:bg-brand/5 transition-colors text-sm uppercase font-medium tracking-wider">P&L Ownership</div>
+                                <div class="px-5 py-3 bg-bg-card border border-str hover:border-brand hover:bg-brand/5 transition-colors text-sm uppercase font-medium tracking-wider">Product Strategy</div>
+                                <div class="px-5 py-3 bg-bg-card border border-str hover:border-brand hover:bg-brand/5 transition-colors text-sm uppercase font-medium tracking-wider">Content Marketing</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="text-[10px] text-txt-muted font-bold uppercase tracking-[0.2em] mb-3">Leadership & Operations</div>
+                            <div class="flex flex-wrap gap-3">
+                                <div class="px-5 py-3 bg-bg-card border border-str hover:border-brand hover:bg-brand/5 transition-colors text-sm uppercase font-medium tracking-wider">OKR Design & Execution</div>
+                                <div class="px-5 py-3 bg-bg-card border border-str hover:border-brand hover:bg-brand/5 transition-colors text-sm uppercase font-medium tracking-wider">Cross-functional Leadership</div>
+                                <div class="px-5 py-3 bg-bg-card border border-str hover:border-brand hover:bg-brand/5 transition-colors text-sm uppercase font-medium tracking-wider">Program Management</div>
+                                <div class="px-5 py-3 bg-bg-card border border-str hover:border-brand hover:bg-brand/5 transition-colors text-sm uppercase font-medium tracking-wider">Business Operations</div>
+                                <div class="px-5 py-3 bg-bg-card border border-str hover:border-brand hover:bg-brand/5 transition-colors text-sm uppercase font-medium tracking-wider">Team Building & Scaling</div>
+                                <div class="px-5 py-3 bg-bg-card border border-str hover:border-brand hover:bg-brand/5 transition-colors text-sm uppercase font-medium tracking-wider">Agent/Channel Acquisition</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="text-[10px] text-txt-muted font-bold uppercase tracking-[0.2em] mb-3">Analytics & Tools</div>
+                            <div class="flex flex-wrap gap-3">
+                                <div class="px-5 py-3 bg-bg-card border border-str hover:border-brand hover:bg-brand/5 transition-colors text-sm uppercase font-medium tracking-wider">Data Analytics</div>
+                                <div class="px-5 py-3 bg-bg-card border border-str hover:border-brand hover:bg-brand/5 transition-colors text-sm uppercase font-medium tracking-wider">SAS / SQL / Alteryx</div>
+                                <div class="px-5 py-3 bg-bg-card border border-str hover:border-brand hover:bg-brand/5 transition-colors text-sm uppercase font-medium tracking-wider">Power BI / Tableau</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION & ABOUT (split) -->
+        <section class="border-b border-str">
+            <div class="grid grid-cols-1 lg:grid-cols-2">
+
+                <!-- EDUCATION -->
+                <div id="education" class="p-8 md:p-16 lg:p-20 lg:border-r border-str flex flex-col">
+                    <h2 class="text-3xl md:text-4xl font-black uppercase tracking-[0.1em] border-b border-str pb-3 mb-12 reveal"><span class="text-cyan">03/</span> <span class="text-white">Education</span></h2>
+                    <div class="flex-grow flex flex-col justify-center space-y-12">
+                        <div class="group reveal delay-1">
+                            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2 gap-1">
+                                <h3 class="text-2xl font-black uppercase group-hover:text-brand transition-colors">IIM Calcutta</h3>
+                                <span class="text-txt-secondary text-xs tracking-[0.12em] uppercase">2019 — 2021</span>
+                            </div>
+                            <p class="text-lg text-white font-medium">MBA</p>
+                            <p class="text-txt-secondary text-sm mt-2">Institute Rank 20/480 (Top 10%ile) &bull; CAT 99.72%ile &bull; GMAT 99%ile equivalent</p>
+                            <p class="text-txt-secondary text-sm mt-1">National Runners Up / 5000+ teams in Accenture B-School Challenge</p>
+                        </div>
+                        <div class="group reveal delay-2">
+                            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2 gap-1">
+                                <h3 class="text-2xl font-black uppercase group-hover:text-brand transition-colors">NITK Surathkal</h3>
+                                <span class="text-txt-secondary text-xs tracking-[0.12em] uppercase">2013 — 2017</span>
+                            </div>
+                            <p class="text-lg text-white font-medium">B.Tech</p>
+                            <p class="text-txt-secondary text-sm mt-2">Silver Medalist 2nd/100 (9.2/10) &bull; JEE AIR 4922 &bull; "Best Outgoing Student"</p>
+                            <p class="text-txt-secondary text-sm mt-1">MITACS International Scholarship — 1/500 international students</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ABOUT -->
+                <div id="about" class="bg-bg-surface p-8 md:p-16 lg:p-20 flex flex-col">
+                    <h2 class="text-3xl md:text-4xl font-black uppercase tracking-[0.1em] border-b border-str pb-3 mb-12 reveal"><span class="text-cyan">04/</span> <span class="text-white">About</span></h2>
+                    <div class="flex-grow flex flex-col justify-center reveal delay-1">
+                        <p class="text-txt-secondary leading-relaxed mb-6 border-l-2 border-brand pl-5 text-base md:text-lg">
+                            Strategy operator at heart — I take messy, ambiguous bets and turn them into
+                            structured, scalable businesses. From scaling micro-drama at PocketFM to building
+                            a cross-sell P&L from zero at InsuranceDekho, I thrive where chaos meets opportunity.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+                            <div class="bg-bg-card border border-str p-5 group hover:border-brand transition-colors">
+                                <i class="ph ph-mountains text-2xl text-brand mb-2 block"></i>
+                                <p class="text-white font-bold text-sm uppercase mb-1">Adventurer</p>
+                                <p class="text-txt-secondary text-xs">Everest Base Camp (5364m) + three 5000m+ peaks. State-level basketball.</p>
+                            </div>
+                            <div class="bg-bg-card border border-str p-5 group hover:border-brand transition-colors">
+                                <i class="ph ph-brain text-2xl text-brand mb-2 block"></i>
+                                <p class="text-white font-bold text-sm uppercase mb-1">AI-Native</p>
+                                <p class="text-txt-secondary text-xs">Builds with Claude, ships side projects. Deep interest in Indian VC ecosystem.</p>
+                            </div>
+                            <div class="bg-bg-card border border-str p-5 group hover:border-brand transition-colors">
+                                <i class="ph ph-book-open-text text-2xl text-brand mb-2 block"></i>
+                                <p class="text-white font-bold text-sm uppercase mb-1">Reader</p>
+                                <p class="text-txt-secondary text-xs">Avid non-fiction reader. Growth-X Fellow.</p>
+                            </div>
+                            <div class="bg-bg-card border border-str p-5 group hover:border-brand transition-colors">
+                                <i class="ph ph-rocket-launch text-2xl text-brand mb-2 block"></i>
+                                <p class="text-white font-bold text-sm uppercase mb-1">Builder</p>
+                                <p class="text-txt-secondary text-xs">Productivity tools, widgets, browser extensions. Learning by shipping.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- FOOTER CTA -->
+        <footer class="bg-brand text-white relative pt-24 pb-12 overflow-hidden">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none opacity-[0.08]">
+                <span class="text-[18vw] font-black uppercase leading-none whitespace-nowrap">LET'S BUILD</span>
+            </div>
+            <div class="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10 text-center flex flex-col items-center">
+                <h2 class="text-4xl md:text-7xl font-black uppercase mb-6">Let's build together</h2>
+                <p class="text-xl mb-10 font-light max-w-xl text-white/80">Looking for Chief of Staff, Strategy, and 0-to-1 roles at ambitious startups.</p>
+                <a href="mailto:aruns2021@email.iimcal.ac.in" class="group relative inline-flex items-center justify-center px-10 py-5 font-bold text-brand bg-white uppercase tracking-wider text-sm overflow-hidden hover:-translate-y-0.5 transition-transform">
+                    <span class="absolute w-0 h-0 transition-all duration-500 ease-out bg-bg-base rounded-full group-hover:w-64 group-hover:h-48"></span>
+                    <span class="relative group-hover:text-white transition-colors flex items-center gap-2">
+                        Get in Touch <i class="ph ph-arrow-right text-lg"></i>
+                    </span>
+                </a>
+                <div class="w-full mt-20 pt-6 border-t border-white/20 flex flex-col md:flex-row justify-between items-center gap-3 text-xs font-semibold uppercase tracking-[0.12em] text-white/50">
+                    <div>Arun Sharma &bull; 2026</div>
+                    <div class="flex gap-5">
+                        <a href="https://www.linkedin.com/in/arun-sharma-a9a229103" target="_blank" class="hover:text-white transition-colors">LinkedIn</a>
+                        <a href="mailto:aruns2021@email.iimcal.ac.in" class="hover:text-white transition-colors">Email</a>
+                        <a href="tel:+919663338493" class="hover:text-white transition-colors">Phone</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <script>
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    observer.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Scroll spy
+        const sections = document.querySelectorAll('section[id], div[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(s => {
+                if (window.scrollY >= s.offsetTop - 120) current = s.id;
+            });
+            navLinks.forEach(a => {
+                a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+            });
+        });
+
+        // Expand/collapse
+        function toggleExpand(btn) {
+            const content = btn.nextElementSibling;
+            const icon = btn.querySelector('i');
+            content.classList.toggle('open');
+            icon.style.transform = content.classList.contains('open') ? 'rotate(180deg)' : '';
+            btn.querySelector('span') || (btn.firstChild.textContent = content.classList.contains('open') ? 'Less ' : 'Explore ');
+        }
+
+        // Counter Animation
+        const countObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                    entry.target.classList.add('counted');
+                    const target = parseFloat(entry.target.getAttribute('data-target'));
+                    const decimals = parseInt(entry.target.getAttribute('data-decimals')) || 0;
+                    const duration = 1500; // ms
+                    const start = performance.now();
+                    
+                    const update = (time) => {
+                        const progress = Math.min((time - start) / duration, 1);
+                        const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+                        const current = target * easeOutQuart;
+                        entry.target.innerText = current.toFixed(decimals);
+                        if (progress < 1) requestAnimationFrame(update);
+                        else entry.target.innerText = target.toFixed(decimals);
+                    };
+                    requestAnimationFrame(update);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        document.querySelectorAll('.counter').forEach(el => countObserver.observe(el));
+    </script>
+</body>
+</html>
