@@ -103,27 +103,71 @@
         }
 
         .hero-stage {
-            display: flex;
+            position: relative;
+            display: grid;
             flex: 1;
+            place-items: center;
             align-items: center;
+            isolation: isolate;
+            text-align: center;
         }
 
         .hero-copy {
             min-width: 0;
             width: 100%;
             max-width: calc(100vw - 40px);
+            margin: 0 auto;
         }
 
         .hero-side {
             display: none;
         }
 
+        .hero-ghost {
+            position: absolute;
+            left: 50%;
+            top: 28%;
+            z-index: -1;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.035);
+            font-family: "Satoshi", "Source Sans 3", sans-serif;
+            font-size: clamp(4.5rem, 14vw, 13rem);
+            font-weight: 900;
+            line-height: 0.8;
+            text-transform: uppercase;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        .hero-kinetic-word {
+            position: absolute;
+            z-index: 0;
+            display: none;
+            border: 1px solid rgba(255,255,255,0.14);
+            background: rgba(7,9,13,0.44);
+            padding: 8px 11px;
+            color: rgba(255,255,255,0.62);
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            animation: kineticFloat 8s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
+
+        .hero-kinetic-word.strategy { color: #55e6a5; }
+        .hero-kinetic-word.distribution { color: var(--accent); }
+        .hero-kinetic-word.capital { color: #F0C05A; }
+        .hero-kinetic-word.teams { color: #FF6B6B; }
+
         .mandate-stream {
             margin-top: 28px;
-            max-width: 680px;
+            max-width: 760px;
             overflow: hidden;
             border: 1px solid rgba(255,255,255,0.12);
-            background: rgba(13,15,18,0.72);
+            background: rgba(13,15,18,0.58);
+            transform: rotate(1.4deg);
         }
 
         .mandate-track {
@@ -457,16 +501,23 @@
 
         @media (min-width: 1024px) {
             .hero-stage {
-                display: grid;
-                grid-template-columns: minmax(0, 0.96fr) minmax(360px, 0.72fr);
-                gap: clamp(48px, 7vw, 104px);
+                grid-template-columns: minmax(0, 1fr);
             }
             .hero-copy {
-                max-width: 860px;
+                max-width: 980px;
             }
             .hero-side {
-                display: block;
+                display: none;
             }
+            .hero-kinetic-word {
+                display: inline-flex;
+            }
+            .hero-kinetic-word.strategy { left: 10%; top: 23%; }
+            .hero-kinetic-word.growth { right: 12%; top: 22%; animation-delay: -2s; }
+            .hero-kinetic-word.capital { left: 13%; bottom: 28%; animation-delay: -4s; }
+            .hero-kinetic-word.distribution { right: 8%; bottom: 20%; animation-delay: -1s; }
+            .hero-kinetic-word.pnl { left: 6%; top: 50%; animation-delay: -5s; }
+            .hero-kinetic-word.teams { right: 9%; top: 52%; animation-delay: -3s; }
             .system-grid {
                 grid-template-columns: 0.78fr 1.22fr;
                 padding: 0 40px;
@@ -481,6 +532,11 @@
         @keyframes mandateMove {
             from { transform: translateX(0); }
             to { transform: translateX(-50%); }
+        }
+
+        @keyframes kineticFloat {
+            from { transform: translateY(0); }
+            to { transform: translateY(-18px); }
         }
 
         @keyframes proofLift {
@@ -699,6 +755,24 @@
                 white-space: normal;
                 overflow-wrap: break-word;
             }
+            .hero-name {
+                font-size: clamp(3rem, 10vw, 3.25rem);
+            }
+            .hero-copy p {
+                max-width: 250px;
+            }
+            .mandate-stream {
+                width: min(100%, 280px);
+                transform: none;
+            }
+            .hero-copy .mt-8.flex {
+                flex-direction: column;
+                align-items: center;
+            }
+            .hero-copy .mt-8.flex a {
+                width: min(100%, 220px);
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -740,10 +814,18 @@
         <section class="relative min-h-screen overflow-hidden border-b border-line pt-[72px]">
             <div class="scene-grid absolute inset-0 opacity-35"></div>
 
-            <div class="relative z-10 mx-auto flex min-h-[calc(100vh-72px)] max-w-[1440px] flex-col justify-end px-5 pb-0 pt-12 md:px-10">
+            <div class="relative z-10 mx-auto flex min-h-[calc(100vh-72px)] max-w-[1440px] flex-col justify-center px-5 py-12 md:px-10">
                 <div class="hero-stage">
-                    <div class="hero-copy md:max-w-5xl">
-                        <div class="data-label mb-6 flex flex-wrap items-center gap-3 text-[10px] font-bold uppercase tracking-[0.16em] text-txt-secondary reveal">
+                    <div class="hero-ghost" aria-hidden="true">Build the system</div>
+                    <span class="hero-kinetic-word strategy">Strategy</span>
+                    <span class="hero-kinetic-word growth">Growth</span>
+                    <span class="hero-kinetic-word capital">Capital</span>
+                    <span class="hero-kinetic-word distribution">Distribution</span>
+                    <span class="hero-kinetic-word pnl">P&amp;L</span>
+                    <span class="hero-kinetic-word teams">Teams</span>
+
+                    <div class="hero-copy relative md:max-w-6xl">
+                        <div class="data-label mb-6 flex flex-wrap items-center justify-center gap-3 text-[10px] font-bold uppercase tracking-[0.16em] text-txt-secondary reveal">
                             <span class="inline-flex items-center gap-2 text-green">
                                 <span class="h-2 w-2 bg-green shadow-[0_0_18px_#55e6a5]"></span>
                                 Available now
@@ -756,46 +838,28 @@
                             <span>Arun</span><span>Sharma</span>
                         </h1>
 
-                        <p class="mt-8 max-w-[330px] text-lg font-light leading-relaxed text-txt-secondary sm:max-w-[560px] md:max-w-2xl md:text-2xl reveal">
-                            Founder-side operator across growth, GTM, P&amp;L, and capital for messy 0-to-1 mandates.
+                        <p class="mx-auto mt-8 max-w-[340px] text-lg font-light leading-relaxed text-txt-secondary sm:max-w-[620px] md:max-w-3xl md:text-2xl reveal">
+                            From chaos to operating rhythm across strategy, growth, and venture build.
                         </p>
 
-                        <div class="mandate-stream reveal" aria-label="Operating mandate stream">
+                        <div class="mandate-stream mx-auto reveal" aria-label="Operating mandate stream">
                             <div class="mandate-track" aria-hidden="true">
-                                <span><strong>PocketFM</strong> micro-drama GTM</span>
-                                <span><strong>PocketTV</strong> 500M+ organic views</span>
-                                <span><strong>Growth</strong> paid loops + promo tests</span>
-                                <span><strong>Content</strong> ops cadence + testing</span>
-                                <span><strong>InsuranceDekho</strong> cross-sell P&amp;L</span>
-                                <span><strong>Agents</strong> 80K to 200K+ network</span>
-                                <span><strong>AOP</strong> margin reviews + dashboards</span>
-                                <span><strong>MPL</strong> venture build</span>
-                                <span><strong>Series A</strong> VDR + diligence</span>
-                                <span><strong>Capital</strong> investor demos + pipeline</span>
-                                <span><strong>Team</strong> 0-to-20 hiring system</span>
-                                <span><strong>Board</strong> decision materials</span>
-                                <span><strong>PocketFM</strong> micro-drama GTM</span>
-                                <span><strong>PocketTV</strong> 500M+ organic views</span>
-                                <span><strong>Growth</strong> paid loops + promo tests</span>
-                                <span><strong>Content</strong> ops cadence + testing</span>
-                                <span><strong>InsuranceDekho</strong> cross-sell P&amp;L</span>
-                                <span><strong>Agents</strong> 80K to 200K+ network</span>
-                                <span><strong>AOP</strong> margin reviews + dashboards</span>
-                                <span><strong>MPL</strong> venture build</span>
-                                <span><strong>Series A</strong> VDR + diligence</span>
-                                <span><strong>Capital</strong> investor demos + pipeline</span>
-                                <span><strong>Team</strong> 0-to-20 hiring system</span>
-                                <span><strong>Board</strong> decision materials</span>
+                                <span><strong>Signal</strong> ambiguity to mandate</span>
+                                <span><strong>Decision</strong> strategy to execution</span>
+                                <span><strong>Cadence</strong> reviews to rhythm</span>
+                                <span><strong>Scale</strong> loops to systems</span>
+                                <span><strong>Capital</strong> narrative to diligence</span>
+                                <span><strong>Teams</strong> hiring to ownership</span>
+                                <span><strong>Signal</strong> ambiguity to mandate</span>
+                                <span><strong>Decision</strong> strategy to execution</span>
+                                <span><strong>Cadence</strong> reviews to rhythm</span>
+                                <span><strong>Scale</strong> loops to systems</span>
+                                <span><strong>Capital</strong> narrative to diligence</span>
+                                <span><strong>Teams</strong> hiring to ownership</span>
                             </div>
                         </div>
 
-                        <div class="hero-proof-order mt-7 reveal" aria-label="Selected proof order">
-                            <div><span>01</span><strong>PocketFM</strong><em>$2M MRR / 500M+ views</em></div>
-                            <div><span>02</span><strong>InsuranceDekho</strong><em>Rs 100Cr+ AGWP</em></div>
-                            <div><span>03</span><strong>MPL</strong><em>$20M Series A workstreams</em></div>
-                        </div>
-
-                        <div class="mt-8 flex flex-wrap gap-3 reveal">
+                        <div class="mt-8 flex flex-wrap justify-center gap-3 reveal">
                             <a href="mailto:aruns2021@email.iimcal.ac.in" class="inline-flex items-center gap-2 border border-white bg-white px-5 py-3 text-sm font-black uppercase tracking-[0.1em] text-ink transition-transform hover:-translate-y-0.5">
                                 <i class="ph ph-envelope-simple"></i>
                                 Email Arun
@@ -808,50 +872,6 @@
                                 <i class="ph ph-linkedin-logo"></i>
                                 LinkedIn
                             </a>
-                        </div>
-                    </div>
-
-                    <div class="hero-side reveal" aria-hidden="true">
-                        <div class="sequence-panel">
-                            <div class="data-label text-[10px] font-bold uppercase tracking-[0.18em] text-txt-muted">Proof sequence</div>
-                            <div class="sequence-line"></div>
-                            <div class="sequence-card pocket">
-                                <div class="sequence-index">01 / Growth</div>
-                                <div class="sequence-company">PocketFM</div>
-                                <div class="sequence-metric">$2M MRR, 500K DAU, 500M+ organic views.</div>
-                            </div>
-                            <div class="sequence-card insurance">
-                                <div class="sequence-index">02 / P&amp;L</div>
-                                <div class="sequence-company">InsuranceDekho</div>
-                                <div class="sequence-metric">Rs 100Cr+ AGWP built from zero.</div>
-                            </div>
-                            <div class="sequence-card mpl">
-                                <div class="sequence-index">03 / Capital</div>
-                                <div class="sequence-company">MPL</div>
-                                <div class="sequence-metric">$20M Series A workstreams.</div>
-                            </div>
-                            <div class="sequence-bars">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="border-y border-line bg-panel/50 py-5">
-                    <div class="grid gap-4 text-sm sm:grid-cols-3">
-                        <div>
-                            <div class="proof-number text-3xl font-black text-[var(--accent)]">PocketFM</div>
-                            <p class="mt-1 text-txt-secondary">$2M MRR, 500K DAU, and 500M+ organic views.</p>
-                        </div>
-                        <div>
-                            <div class="proof-number text-3xl font-black text-green">InsuranceDekho</div>
-                            <p class="mt-1 text-txt-secondary">Rs 100Cr+ AGWP built from zero across 4 products.</p>
-                        </div>
-                        <div>
-                            <div class="proof-number text-3xl font-black text-gold">MPL</div>
-                            <p class="mt-1 text-txt-secondary">$20M Series A workstreams, VDR, diligence, demos.</p>
                         </div>
                     </div>
                 </div>
