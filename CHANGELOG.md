@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.0.3.0] - 2026-05-07
+
+### Changed
+- Balanced the first portfolio viewport with a desktop proof-sequence panel so the hero no longer leaves the right side empty.
+- Kept the mobile first screen unchanged while preserving the PocketFM, InsuranceDekho, MPL proof order.
+
 ## [0.0.2.0] - 2026-05-07
 
 ### Changed
