@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.0.1.2] - 2026-05-07
+
+### Changed
+- Reworked the first viewport into a kinetic deal-room hero with a moving mandate stream, animated operating-system panel, and more specific proof narratives.
+
 ## [0.0.1.1] - 2026-05-07
 
 ### Fixed
