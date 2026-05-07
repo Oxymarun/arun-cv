@@ -136,71 +136,42 @@
             color: var(--accent);
         }
 
-        .hero-proof-stack {
-            display: grid;
+        .hero-proof-order {
+            display: flex;
             max-width: 760px;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 12px;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
-        .proof-chip {
-            position: relative;
-            min-height: 156px;
-            overflow: hidden;
+        .hero-proof-order div {
+            display: inline-flex;
+            min-height: 46px;
+            align-items: center;
+            gap: 10px;
             border: 1px solid rgba(255,255,255,0.13);
-            background:
-                linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.018)),
-                rgba(13,15,18,0.8);
-            padding: 18px;
-            animation: proofLift 0.7s cubic-bezier(0.16,1,0.3,1) both;
+            background: rgba(13,15,18,0.66);
+            padding: 0 14px;
         }
 
-        .proof-chip:nth-child(2) { animation-delay: 0.08s; }
-        .proof-chip:nth-child(3) { animation-delay: 0.16s; }
-
-        .proof-chip::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.08) 45%, transparent 62%);
-            transform: translateX(-120%);
-            animation: proofScan 6s ease-in-out infinite;
-        }
-
-        .proof-chip:nth-child(2)::after { animation-delay: 1.2s; }
-        .proof-chip:nth-child(3)::after { animation-delay: 2.4s; }
-
-        .proof-kicker {
-            position: relative;
-            z-index: 1;
+        .hero-proof-order span {
+            color: var(--accent);
             font-family: "IBM Plex Mono", monospace;
             font-size: 10px;
             font-weight: 700;
             letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--accent);
         }
 
-        .proof-title {
-            position: relative;
-            z-index: 1;
-            margin-top: 18px;
+        .hero-proof-order strong {
             color: #fff;
-            font-family: "Satoshi", "Source Sans 3", sans-serif;
-            font-size: 22px;
+            font-size: 13px;
             font-weight: 900;
-            line-height: 1.02;
-            overflow-wrap: break-word;
+            text-transform: uppercase;
         }
 
-        .proof-meta {
-            position: relative;
-            z-index: 1;
-            margin-top: 14px;
+        .hero-proof-order em {
             color: #A8B0BD;
-            font-size: 14px;
-            line-height: 1.35;
-            overflow-wrap: break-word;
+            font-size: 13px;
+            font-style: normal;
         }
 
         .deal-room {
@@ -325,6 +296,32 @@
 
         .deal-progress span:nth-child(2)::before { animation-delay: 0.5s; background: #D9A441; }
         .deal-progress span:nth-child(3)::before { animation-delay: 1s; background: #43B883; }
+
+        .system-grid {
+            position: relative;
+            z-index: 10;
+            display: grid;
+            max-width: 1280px;
+            margin: 0 auto;
+            gap: 40px;
+            padding: 0 20px;
+        }
+
+        .system-copy {
+            max-width: 620px;
+        }
+
+        .system-visual {
+            position: relative;
+            min-height: 560px;
+        }
+
+        @media (min-width: 1024px) {
+            .system-grid {
+                grid-template-columns: 0.78fr 1.22fr;
+                padding: 0 40px;
+            }
+        }
 
         @keyframes heroWord {
             from { opacity: 0; transform: translateY(24px); }
@@ -504,21 +501,38 @@
                 width: 90vw;
                 height: 90vw;
             }
-            .hero-proof-stack {
-                width: calc(100vw - 40px);
-                max-width: calc(100vw - 40px);
-                grid-template-columns: 1fr;
+            .hero-proof-order div {
+                width: 100%;
+                justify-content: flex-start;
             }
-            .proof-chip {
-                width: calc(100vw - 40px);
-                max-width: calc(100vw - 40px);
-                min-height: 132px;
-                box-sizing: border-box;
+            .hero-proof-order em {
+                display: none;
+            }
+            .system-visual {
+                min-height: 420px;
+            }
+            .system-visual .deal-room {
+                inset: 0;
+                padding: 20px;
+            }
+            .system-visual .deal-core {
+                width: 150px;
+                min-height: 150px;
                 padding: 18px;
             }
-            .proof-title {
-                font-size: 21px;
-                line-height: 1.08;
+            .system-visual .deal-core-title {
+                font-size: 26px;
+            }
+            .system-visual .deal-node {
+                width: 142px;
+                padding: 12px;
+            }
+            .system-visual .deal-node.capital { left: 18px; top: 72px; }
+            .system-visual .deal-node.revenue { right: 18px; top: 72px; }
+            .system-visual .deal-node.pnl { left: 18px; bottom: 62px; }
+            .system-visual .deal-node.cadence { right: 18px; bottom: 62px; }
+            .system-visual .deal-node-copy {
+                font-size: 14px;
             }
             .mandate-stream {
                 max-width: 100%;
@@ -574,7 +588,7 @@
             <div class="scene-grid absolute inset-0 opacity-35"></div>
 
             <div class="relative z-10 mx-auto flex min-h-[calc(100vh-72px)] max-w-[1440px] flex-col justify-end px-5 pb-0 pt-12 md:px-10">
-                <div class="grid flex-1 items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+                <div class="flex flex-1 items-center">
                     <div class="min-w-0 w-full max-w-[calc(100vw_-_40px)] md:max-w-5xl">
                         <div class="data-label mb-6 flex flex-wrap items-center gap-3 text-[10px] font-bold uppercase tracking-[0.16em] text-txt-secondary reveal">
                             <span class="inline-flex items-center gap-2 text-green">
@@ -590,40 +604,42 @@
                         </h1>
 
                         <p class="mt-8 max-w-[330px] text-lg font-light leading-relaxed text-txt-secondary sm:max-w-[560px] md:max-w-2xl md:text-2xl reveal">
-                            Founder-side operator for messy 0-to-1 growth bets. I turn ambiguous mandates into fundraises, GTM engines, operating cadences, teams, dashboards, and scaled revenue.
+                            Founder-side operator across growth, GTM, P&amp;L, and capital for messy 0-to-1 mandates.
                         </p>
 
                         <div class="mandate-stream reveal" aria-label="Operating mandate stream">
                             <div class="mandate-track" aria-hidden="true">
-                                <span><strong>Fundraise</strong> VDR + investor pipeline</span>
-                                <span><strong>GTM</strong> launch channels + retention loops</span>
-                                <span><strong>P&amp;L</strong> margin cadence + operating reviews</span>
+                                <span><strong>PocketFM</strong> micro-drama GTM</span>
+                                <span><strong>PocketTV</strong> 500M+ organic views</span>
+                                <span><strong>Growth</strong> paid loops + promo tests</span>
+                                <span><strong>Content</strong> ops cadence + testing</span>
+                                <span><strong>InsuranceDekho</strong> cross-sell P&amp;L</span>
+                                <span><strong>Agents</strong> 80K to 200K+ network</span>
+                                <span><strong>AOP</strong> margin reviews + dashboards</span>
+                                <span><strong>MPL</strong> venture build</span>
+                                <span><strong>Series A</strong> VDR + diligence</span>
+                                <span><strong>Capital</strong> investor demos + pipeline</span>
                                 <span><strong>Team</strong> 0-to-20 hiring system</span>
-                                <span><strong>Board</strong> demos + decision materials</span>
-                                <span><strong>Fundraise</strong> VDR + investor pipeline</span>
-                                <span><strong>GTM</strong> launch channels + retention loops</span>
-                                <span><strong>P&amp;L</strong> margin cadence + operating reviews</span>
+                                <span><strong>Board</strong> decision materials</span>
+                                <span><strong>PocketFM</strong> micro-drama GTM</span>
+                                <span><strong>PocketTV</strong> 500M+ organic views</span>
+                                <span><strong>Growth</strong> paid loops + promo tests</span>
+                                <span><strong>Content</strong> ops cadence + testing</span>
+                                <span><strong>InsuranceDekho</strong> cross-sell P&amp;L</span>
+                                <span><strong>Agents</strong> 80K to 200K+ network</span>
+                                <span><strong>AOP</strong> margin reviews + dashboards</span>
+                                <span><strong>MPL</strong> venture build</span>
+                                <span><strong>Series A</strong> VDR + diligence</span>
+                                <span><strong>Capital</strong> investor demos + pipeline</span>
                                 <span><strong>Team</strong> 0-to-20 hiring system</span>
-                                <span><strong>Board</strong> demos + decision materials</span>
+                                <span><strong>Board</strong> decision materials</span>
                             </div>
                         </div>
 
-                        <div class="hero-proof-stack mt-7 reveal">
-                            <div class="proof-chip">
-                                <div class="proof-kicker">Mayhem Studios</div>
-                                <div class="proof-title">$20M Series A workstreams</div>
-                                <p class="proof-meta">Spin-off, VDR, diligence, demos, and 150+ fund pitches.</p>
-                            </div>
-                            <div class="proof-chip">
-                                <div class="proof-kicker">InsuranceDekho</div>
-                                <div class="proof-title">Rs 100Cr+ AGWP from zero</div>
-                                <p class="proof-meta">Built channels, operating cadence, and margins.</p>
-                            </div>
-                            <div class="proof-chip">
-                                <div class="proof-kicker">PocketFM / PocketTV</div>
-                                <div class="proof-title">$2M MRR + 500M views</div>
-                                <p class="proof-meta">Scaled content, paid growth, and social distribution.</p>
-                            </div>
+                        <div class="hero-proof-order mt-7 reveal" aria-label="Selected proof order">
+                            <div><span>01</span><strong>PocketFM</strong><em>$2M MRR / 500M+ views</em></div>
+                            <div><span>02</span><strong>InsuranceDekho</strong><em>Rs 100Cr+ AGWP</em></div>
+                            <div><span>03</span><strong>MPL</strong><em>$20M Series A workstreams</em></div>
                         </div>
 
                         <div class="mt-8 flex flex-wrap gap-3 reveal">
@@ -642,55 +658,21 @@
                         </div>
                     </div>
 
-                    <div class="relative hidden min-h-[520px] lg:block reveal" aria-hidden="true">
-                        <div class="deal-room">
-                            <div class="data-label text-[10px] font-bold uppercase tracking-[0.18em] text-txt-muted">Deal room / operating system</div>
-                            <div class="deal-core">
-                                <div class="deal-core-title">Chaos<br>to<br>Scale</div>
-                                <div class="deal-core-label">Strategy / Growth / Build</div>
-                            </div>
-                            <div class="deal-node capital">
-                                <div class="deal-node-label">Capital</div>
-                                <div class="deal-node-copy">Investor pipeline to closed round</div>
-                            </div>
-                            <div class="deal-node revenue">
-                                <div class="deal-node-label">Revenue</div>
-                                <div class="deal-node-copy">New GTM loops to repeatable MRR</div>
-                            </div>
-                            <div class="deal-node pnl">
-                                <div class="deal-node-label">P&amp;L</div>
-                                <div class="deal-node-copy">Zero to scaled AGWP engine</div>
-                            </div>
-                            <div class="deal-node cadence">
-                                <div class="deal-node-label">Cadence</div>
-                                <div class="deal-node-copy">Teams, dashboards, board rhythm</div>
-                            </div>
-                            <div class="deal-progress">
-                                <span>Frame</span>
-                                <span>Build</span>
-                                <span>Scale</span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <div class="border-y border-line bg-panel/50 py-5">
-                    <div class="grid gap-4 text-sm sm:grid-cols-2 lg:grid-cols-4">
+                    <div class="grid gap-4 text-sm sm:grid-cols-3">
                         <div>
-                            <div class="proof-number text-3xl font-black text-gold">Mayhem Series A</div>
-                            <p class="mt-1 text-txt-secondary">$20M workstreams: spin-off, VDR, diligence, demos.</p>
+                            <div class="proof-number text-3xl font-black text-[var(--accent)]">PocketFM</div>
+                            <p class="mt-1 text-txt-secondary">$2M MRR, 500K DAU, and 500M+ organic views.</p>
                         </div>
                         <div>
-                            <div class="proof-number text-3xl font-black text-green">Cross-sell P&amp;L</div>
+                            <div class="proof-number text-3xl font-black text-green">InsuranceDekho</div>
                             <p class="mt-1 text-txt-secondary">Rs 100Cr+ AGWP built from zero across 4 products.</p>
                         </div>
                         <div>
-                            <div class="proof-number text-3xl font-black text-[var(--accent)]">Micro-drama GTM</div>
-                            <p class="mt-1 text-txt-secondary">$2M MRR and 500K DAU in 5 months.</p>
-                        </div>
-                        <div>
-                            <div class="proof-number text-3xl font-black text-white">PocketTV growth</div>
-                            <p class="mt-1 text-txt-secondary">500M+ organic views across social channels.</p>
+                            <div class="proof-number text-3xl font-black text-gold">MPL</div>
+                            <p class="mt-1 text-txt-secondary">$20M Series A workstreams, VDR, diligence, demos.</p>
                         </div>
                     </div>
                 </div>
@@ -698,28 +680,39 @@
         </section>
 
         <section class="relative overflow-hidden border-b border-line bg-coal py-20 md:py-28">
-            <div class="relative z-10 mx-auto grid max-w-[1280px] gap-10 px-5 md:px-10 lg:grid-cols-[0.9fr_1.1fr]">
-                <div class="reveal">
-                    <div class="data-label text-xs font-bold uppercase tracking-[0.18em] text-[var(--accent)]">Operating system</div>
+            <div class="system-grid">
+                <div class="system-copy reveal">
+                    <div class="data-label text-xs font-bold uppercase tracking-[0.18em] text-[var(--accent)]">Operating loop</div>
                     <h2 class="mt-5 text-5xl font-black leading-[0.94] md:text-7xl">Chaos to Scale.</h2>
-                    <p class="mt-6 max-w-lg text-lg leading-relaxed text-txt-secondary">A repeatable pattern for turning ambiguous mandates into operating systems founders can trust.</p>
+                    <p class="mt-6 text-lg leading-relaxed text-txt-secondary">The pattern behind the work: align the mandate, build the growth or capital engine, then install the cadence that keeps the system scaling.</p>
                 </div>
-                <div class="border border-line bg-panel/45 reveal">
-                    <div class="grid divide-y divide-line sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-                        <div class="p-6 md:p-8">
-                            <div class="data-label text-xs font-bold uppercase tracking-[0.14em] text-[var(--accent)]">01 / Strategy</div>
-                            <h3 class="mt-6 text-2xl font-black">Frame the mandate</h3>
-                            <p class="mt-4 text-base leading-relaxed text-txt-secondary">Clarify the bet, align leadership, and translate ambiguity into a decision-ready plan.</p>
+                <div class="system-visual reveal" aria-hidden="true">
+                    <div class="deal-room">
+                        <div class="data-label text-[10px] font-bold uppercase tracking-[0.18em] text-txt-muted">Operating loop</div>
+                        <div class="deal-core">
+                            <div class="deal-core-title">Chaos<br>to<br>Scale</div>
+                            <div class="deal-core-label">Strategy / Growth / Build</div>
                         </div>
-                        <div class="p-6 md:p-8">
-                            <div class="data-label text-xs font-bold uppercase tracking-[0.14em] text-gold">02 / Growth</div>
-                            <h3 class="mt-6 text-2xl font-black">Build the engine</h3>
-                            <p class="mt-4 text-base leading-relaxed text-txt-secondary">Turn channels, content, partnerships, and retention work into repeatable GTM loops.</p>
+                        <div class="deal-node capital">
+                            <div class="deal-node-label">Capital</div>
+                            <div class="deal-node-copy">Investor pipeline to closed round</div>
                         </div>
-                        <div class="p-6 md:p-8">
-                            <div class="data-label text-xs font-bold uppercase tracking-[0.14em] text-green">03 / Build</div>
-                            <h3 class="mt-6 text-2xl font-black">Install cadence</h3>
-                            <p class="mt-4 text-base leading-relaxed text-txt-secondary">Create teams, dashboards, rituals, and operating pressure so the system keeps scaling.</p>
+                        <div class="deal-node revenue">
+                            <div class="deal-node-label">Revenue</div>
+                            <div class="deal-node-copy">GTM loops to repeatable MRR</div>
+                        </div>
+                        <div class="deal-node pnl">
+                            <div class="deal-node-label">P&amp;L</div>
+                            <div class="deal-node-copy">Zero to scaled AGWP engine</div>
+                        </div>
+                        <div class="deal-node cadence">
+                            <div class="deal-node-label">Cadence</div>
+                            <div class="deal-node-copy">Teams, dashboards, board rhythm</div>
+                        </div>
+                        <div class="deal-progress">
+                            <span>Frame</span>
+                            <span>Build</span>
+                            <span>Scale</span>
                         </div>
                     </div>
                 </div>
@@ -799,7 +792,7 @@
                             </div>
                         </article>
 
-                        <article class="chapter-card p-6 md:p-8" data-world="venture" data-title="Venture Build and Fundraising" data-kicker="Gaming + fundraising" data-copy="MPL and Mayhem moved the work into venture-building ownership, capital formation, and distribution.">
+                        <article class="chapter-card p-6 md:p-8" data-world="venture" data-title="Venture Build and Fundraising" data-kicker="Gaming + fundraising" data-copy="MPL moved the work into venture-building ownership, capital formation, and distribution.">
                             <div class="flex gap-5">
                                 <span class="chapter-marker mt-2 h-3 w-3 shrink-0"></span>
                                 <div class="w-full">
@@ -810,7 +803,7 @@
                                         </div>
                                         <img src="./Assets_Logo/MPL.jpeg" alt="MPL" class="h-12 w-12 bg-white object-contain p-2">
                                     </div>
-                                    <p class="mt-5 max-w-2xl text-base leading-relaxed text-txt-secondary">Stepped into venture-building: helped lead the Mayhem Studios spin-off and $20M Series A, pitched 150+ global funds, secured Truecaller distribution, and managed IPL Fantasy at 1.7M+ DAU.</p>
+                                    <p class="mt-5 max-w-2xl text-base leading-relaxed text-txt-secondary">Stepped into MPL venture-building: helped run $20M Series A workstreams, pitched 150+ global funds, secured Truecaller distribution, and managed IPL Fantasy at 1.7M+ DAU.</p>
                                 </div>
                             </div>
                         </article>
@@ -868,35 +861,29 @@
                 <div class="mb-12 flex flex-col justify-between gap-5 border-b border-line pb-6 md:flex-row md:items-end">
                     <div class="reveal">
                         <div class="data-label text-xs font-bold uppercase tracking-[0.18em] text-[var(--accent)]">02 / Selected proof</div>
-                        <h2 class="mt-3 text-5xl font-black leading-none md:text-7xl">Proof across capital, revenue, P&amp;L, and audience.</h2>
+                        <h2 class="mt-3 text-5xl font-black leading-none md:text-7xl">Proof across growth, P&amp;L, and capital.</h2>
                     </div>
                     <p class="max-w-md text-base leading-relaxed text-txt-secondary reveal">Selected outcomes from founder-office, GTM, growth, and strategy roles, with ownership tied to business metrics.</p>
                 </div>
 
-                <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-                    <article class="proof-card p-6 reveal">
-                        <div class="data-label text-[10px] font-bold uppercase tracking-[0.16em] text-txt-muted">Capital</div>
-                        <div class="proof-number mt-8 text-5xl font-black text-gold md:text-6xl">$20M</div>
-                        <h3 class="mt-5 text-xl font-black">Mayhem Studios fundraise</h3>
-                        <p class="mt-4 text-base leading-relaxed text-txt-secondary">Led spin-off and Series A workstreams with the CEO, including investor pipeline, pitch materials, VDR, diligence, and demos; pitched 150+ global funds and closed investors including Sequoia Capital, Truecaller, Hashed, and Steadview.</p>
-                    </article>
+                <div class="grid gap-4 lg:grid-cols-3">
                     <article class="proof-card p-6 reveal">
                         <div class="data-label text-[10px] font-bold uppercase tracking-[0.16em] text-txt-muted">Revenue</div>
                         <div class="proof-number mt-8 text-5xl font-black text-[var(--accent)] md:text-6xl">$2M</div>
-                        <h3 class="mt-5 text-xl font-black">Micro-drama GTM scale-up</h3>
-                        <p class="mt-4 text-base leading-relaxed text-txt-secondary">Early growth lead for PocketFM's micro-drama vertical; drove market entry to $2M MRR and 500K DAU in 5 months across content optimization, paid acquisition, promo testing, and team execution.</p>
+                        <h3 class="mt-5 text-xl font-black">PocketFM growth engine</h3>
+                        <p class="mt-4 text-base leading-relaxed text-txt-secondary">Early growth lead for PocketFM's micro-drama vertical; drove market entry to $2M MRR and 500K DAU in 5 months, then scaled PocketTV social channels to 500M+ organic views.</p>
                     </article>
                     <article class="proof-card p-6 reveal">
                         <div class="data-label text-[10px] font-bold uppercase tracking-[0.16em] text-txt-muted">P&amp;L</div>
                         <div class="proof-number mt-8 text-5xl font-black text-green md:text-6xl">Rs 100Cr+</div>
-                        <h3 class="mt-5 text-xl font-black">Cross-sell P&amp;L built from zero</h3>
+                        <h3 class="mt-5 text-xl font-black">InsuranceDekho cross-sell P&amp;L</h3>
                         <p class="mt-4 text-base leading-relaxed text-txt-secondary">Built InsuranceDekho's cross-sell and financial services business from scratch to Rs 100Cr+ AGWP and approximately Rs 15Cr ARR across 4 high-margin product lines; led GTM, daily operations, AOP adherence, and monthly margin tracking.</p>
                     </article>
                     <article class="proof-card p-6 reveal">
-                        <div class="data-label text-[10px] font-bold uppercase tracking-[0.16em] text-txt-muted">Audience</div>
-                        <div class="proof-number mt-8 text-5xl font-black text-white md:text-6xl">500M+</div>
-                        <h3 class="mt-5 text-xl font-black">PocketTV social growth</h3>
-                        <p class="mt-4 text-base leading-relaxed text-txt-secondary">Led content-marketing GTM for PocketTV across Instagram, YouTube, and Facebook, scaling social channels to 500M+ organic views and $15K/month ad revenue.</p>
+                        <div class="data-label text-[10px] font-bold uppercase tracking-[0.16em] text-txt-muted">Capital</div>
+                        <div class="proof-number mt-8 text-5xl font-black text-gold md:text-6xl">$20M</div>
+                        <h3 class="mt-5 text-xl font-black">MPL venture build</h3>
+                        <p class="mt-4 text-base leading-relaxed text-txt-secondary">Ran Series A workstreams with the CEO, including investor pipeline, pitch materials, VDR, diligence, and demos; pitched 150+ global funds and closed investors including Sequoia Capital, Truecaller, Hashed, and Steadview.</p>
                     </article>
                 </div>
             </div>

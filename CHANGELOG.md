@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.0.2.0] - 2026-05-07
+
+### Changed
+- Simplified the opening portfolio screen so the first proof sequence now leads with PocketFM, then InsuranceDekho, then MPL.
+- Expanded the moving mandate belt with more concrete operating work across growth, P&L, capital, teams, and board cadence.
+- Moved the Chaos to Scale operating diagram into the second scroll and removed the repeated static operating-system card section.
+- Reworked selected proof into three stronger company-led cases with MPL as the capital-workstream label.
+
 ## [0.0.1.2] - 2026-05-07
 
 ### Changed
