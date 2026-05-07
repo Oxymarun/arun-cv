@@ -93,6 +93,274 @@
             mask-image: linear-gradient(to bottom, black, transparent 88%);
         }
 
+        .hero-name span {
+            display: block;
+            animation: heroWord 0.8s cubic-bezier(0.16,1,0.3,1) both;
+        }
+
+        .hero-name span:last-child {
+            animation-delay: 0.12s;
+        }
+
+        .mandate-stream {
+            margin-top: 28px;
+            max-width: 680px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.12);
+            background: rgba(13,15,18,0.72);
+        }
+
+        .mandate-track {
+            display: flex;
+            width: max-content;
+            animation: mandateMove 22s linear infinite;
+        }
+
+        .mandate-track span {
+            display: inline-flex;
+            min-height: 42px;
+            align-items: center;
+            padding: 0 20px;
+            border-right: 1px solid rgba(255,255,255,0.12);
+            color: #A8B0BD;
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .mandate-track strong {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+
+        .hero-proof-stack {
+            display: grid;
+            max-width: 760px;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .proof-chip {
+            position: relative;
+            min-height: 156px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.13);
+            background:
+                linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.018)),
+                rgba(13,15,18,0.8);
+            padding: 18px;
+            animation: proofLift 0.7s cubic-bezier(0.16,1,0.3,1) both;
+        }
+
+        .proof-chip:nth-child(2) { animation-delay: 0.08s; }
+        .proof-chip:nth-child(3) { animation-delay: 0.16s; }
+
+        .proof-chip::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.08) 45%, transparent 62%);
+            transform: translateX(-120%);
+            animation: proofScan 6s ease-in-out infinite;
+        }
+
+        .proof-chip:nth-child(2)::after { animation-delay: 1.2s; }
+        .proof-chip:nth-child(3)::after { animation-delay: 2.4s; }
+
+        .proof-kicker {
+            position: relative;
+            z-index: 1;
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        .proof-title {
+            position: relative;
+            z-index: 1;
+            margin-top: 18px;
+            color: #fff;
+            font-family: "Satoshi", "Source Sans 3", sans-serif;
+            font-size: 22px;
+            font-weight: 900;
+            line-height: 1.02;
+            overflow-wrap: break-word;
+        }
+
+        .proof-meta {
+            position: relative;
+            z-index: 1;
+            margin-top: 14px;
+            color: #A8B0BD;
+            font-size: 14px;
+            line-height: 1.35;
+            overflow-wrap: break-word;
+        }
+
+        .deal-room {
+            position: absolute;
+            inset: 32px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.14);
+            background:
+                linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px),
+                linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+                radial-gradient(circle at 68% 44%, rgba(79,124,255,0.16), transparent 34%),
+                rgba(10,12,16,0.86);
+            background-size: 56px 56px, 56px 56px, auto, auto;
+            padding: 30px;
+        }
+
+        .deal-room::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 18%;
+            bottom: 18%;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, rgba(79,124,255,0.62), transparent);
+            animation: linePulse 3.2s ease-in-out infinite;
+        }
+
+        .deal-core {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 190px;
+            min-height: 190px;
+            transform: translate(-50%, -50%);
+            border: 1px solid rgba(79,124,255,0.48);
+            background: rgba(7,9,13,0.9);
+            padding: 22px;
+        }
+
+        .deal-core-title {
+            color: #fff;
+            font-family: "Satoshi", "Source Sans 3", sans-serif;
+            font-size: 34px;
+            font-weight: 900;
+            line-height: 0.98;
+        }
+
+        .deal-core-label {
+            margin-top: 18px;
+            color: #A8B0BD;
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .deal-node {
+            position: absolute;
+            width: 190px;
+            border: 1px solid rgba(255,255,255,0.13);
+            background: rgba(18,22,29,0.88);
+            padding: 16px;
+            animation: nodeFloat 6s ease-in-out infinite;
+        }
+
+        .deal-node.capital { left: 30px; top: 80px; }
+        .deal-node.revenue { right: 34px; top: 68px; animation-delay: -1.2s; }
+        .deal-node.pnl { left: 54px; bottom: 64px; animation-delay: -2.1s; }
+        .deal-node.cadence { right: 30px; bottom: 84px; animation-delay: -3s; }
+
+        .deal-node-label {
+            color: var(--accent);
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .deal-node-copy {
+            margin-top: 10px;
+            color: #F5F7FA;
+            font-size: 18px;
+            font-weight: 800;
+            line-height: 1.12;
+        }
+
+        .deal-progress {
+            position: absolute;
+            left: 30px;
+            right: 30px;
+            bottom: 28px;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .deal-progress span {
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid rgba(255,255,255,0.16);
+            padding-top: 10px;
+            color: #A8B0BD;
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .deal-progress span::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: -1px;
+            height: 1px;
+            width: 68%;
+            background: var(--accent);
+            animation: lineLoad 4s ease-in-out infinite;
+        }
+
+        .deal-progress span:nth-child(2)::before { animation-delay: 0.5s; background: #D9A441; }
+        .deal-progress span:nth-child(3)::before { animation-delay: 1s; background: #43B883; }
+
+        @keyframes heroWord {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes mandateMove {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        @keyframes proofLift {
+            from { opacity: 0; transform: translateY(18px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes proofScan {
+            0%, 46% { transform: translateX(-120%); }
+            62%, 100% { transform: translateX(120%); }
+        }
+
+        @keyframes nodeFloat {
+            0%, 100% { transform: translateY(0); border-color: rgba(255,255,255,0.13); }
+            50% { transform: translateY(-10px); border-color: rgba(79,124,255,0.42); }
+        }
+
+        @keyframes linePulse {
+            0%, 100% { opacity: 0.28; transform: scaleY(0.72); }
+            50% { opacity: 1; transform: scaleY(1); }
+        }
+
+        @keyframes lineLoad {
+            0%, 100% { transform: translateX(-100%); }
+            45%, 70% { transform: translateX(0); }
+        }
+
         .motion-field {
             position: absolute;
             inset: 0;
@@ -236,6 +504,34 @@
                 width: 90vw;
                 height: 90vw;
             }
+            .hero-proof-stack {
+                width: calc(100vw - 40px);
+                max-width: calc(100vw - 40px);
+                grid-template-columns: 1fr;
+            }
+            .proof-chip {
+                width: calc(100vw - 40px);
+                max-width: calc(100vw - 40px);
+                min-height: 132px;
+                box-sizing: border-box;
+                padding: 18px;
+            }
+            .proof-title {
+                font-size: 21px;
+                line-height: 1.08;
+            }
+            .mandate-stream {
+                max-width: 100%;
+            }
+            .hero-role {
+                display: block;
+                flex-basis: 100%;
+                min-width: 0;
+                max-width: 100%;
+                line-height: 1.5;
+                white-space: normal;
+                overflow-wrap: break-word;
+            }
         }
     </style>
 </head>
@@ -248,8 +544,8 @@
             </a>
 
             <div class="hidden items-center gap-7 text-xs font-bold uppercase tracking-[0.12em] text-txt-secondary md:flex">
-                <a href="#proof" class="nav-link flex min-h-[44px] items-center transition-colors hover:text-white">Proof</a>
                 <a href="#world" class="nav-link flex min-h-[44px] items-center transition-colors hover:text-white">Experience</a>
+                <a href="#proof" class="nav-link flex min-h-[44px] items-center transition-colors hover:text-white">Proof</a>
                 <a href="#profile" class="nav-link flex min-h-[44px] items-center transition-colors hover:text-white">Profile</a>
             </div>
 
@@ -266,8 +562,8 @@
         </div>
 
         <div id="mobMenu" class="mob-menu flex-col gap-4 border-t border-line px-5 pb-5 pt-2 text-sm font-bold uppercase tracking-[0.12em] text-txt-secondary md:hidden">
-            <a href="#proof" class="hover:text-white">Proof</a>
             <a href="#world" class="hover:text-white">Experience</a>
+            <a href="#proof" class="hover:text-white">Proof</a>
             <a href="#profile" class="hover:text-white">Profile</a>
             <a href="./Arun_IIMC_GTM.pdf?v=20260506" download class="text-[var(--accent)]">Download CV</a>
         </div>
@@ -286,33 +582,47 @@
                                 Available now
                             </span>
                             <span class="h-px w-10 bg-[var(--accent)]"></span>
-                            <span>Chief of Staff, Strategy &amp; Growth, Founder's Office</span>
+                            <span class="hero-role">Chief of Staff / Strategy &amp; Growth</span>
                         </div>
 
-                        <h1 class="max-w-full text-[18vw] font-black leading-[0.84] tracking-normal sm:text-[96px] md:text-[128px] lg:text-[148px] reveal" aria-label="Arun Sharma">
-                            Arun<br>Sharma
+                        <h1 class="hero-name max-w-full text-[18vw] font-black leading-[0.84] tracking-normal sm:text-[96px] md:text-[128px] lg:text-[148px] reveal" aria-label="Arun Sharma">
+                            <span>Arun</span><span>Sharma</span>
                         </h1>
 
                         <p class="mt-8 max-w-[330px] text-lg font-light leading-relaxed text-txt-secondary sm:max-w-[560px] md:max-w-2xl md:text-2xl reveal">
                             Founder-side operator for messy 0-to-1 growth bets. I turn ambiguous mandates into fundraises, GTM engines, operating cadences, teams, dashboards, and scaled revenue.
                         </p>
 
-                        <div class="mt-7 grid max-w-2xl grid-cols-2 gap-3 reveal sm:grid-cols-4">
-                            <div class="border border-line bg-panel/55 p-4">
-                                <div class="proof-number text-2xl font-black text-gold md:text-3xl">$20M</div>
-                                <div class="data-label mt-1 text-[10px] font-bold uppercase tracking-[0.12em] text-txt-secondary">Series A</div>
+                        <div class="mandate-stream reveal" aria-label="Operating mandate stream">
+                            <div class="mandate-track" aria-hidden="true">
+                                <span><strong>Fundraise</strong> VDR + investor pipeline</span>
+                                <span><strong>GTM</strong> launch channels + retention loops</span>
+                                <span><strong>P&amp;L</strong> margin cadence + operating reviews</span>
+                                <span><strong>Team</strong> 0-to-20 hiring system</span>
+                                <span><strong>Board</strong> demos + decision materials</span>
+                                <span><strong>Fundraise</strong> VDR + investor pipeline</span>
+                                <span><strong>GTM</strong> launch channels + retention loops</span>
+                                <span><strong>P&amp;L</strong> margin cadence + operating reviews</span>
+                                <span><strong>Team</strong> 0-to-20 hiring system</span>
+                                <span><strong>Board</strong> demos + decision materials</span>
                             </div>
-                            <div class="border border-line bg-panel/55 p-4">
-                                <div class="proof-number text-2xl font-black text-green md:text-3xl">Rs 100Cr+</div>
-                                <div class="data-label mt-1 text-[10px] font-bold uppercase tracking-[0.12em] text-txt-secondary">AGWP from zero</div>
+                        </div>
+
+                        <div class="hero-proof-stack mt-7 reveal">
+                            <div class="proof-chip">
+                                <div class="proof-kicker">Mayhem Studios</div>
+                                <div class="proof-title">$20M Series A workstreams</div>
+                                <p class="proof-meta">Spin-off, VDR, diligence, demos, and 150+ fund pitches.</p>
                             </div>
-                            <div class="border border-line bg-panel/55 p-4">
-                                <div class="proof-number text-2xl font-black text-[var(--accent)] md:text-3xl">$2M</div>
-                                <div class="data-label mt-1 text-[10px] font-bold uppercase tracking-[0.12em] text-txt-secondary">MRR in 5 mo</div>
+                            <div class="proof-chip">
+                                <div class="proof-kicker">InsuranceDekho</div>
+                                <div class="proof-title">Rs 100Cr+ AGWP from zero</div>
+                                <p class="proof-meta">Built channels, operating cadence, and margins.</p>
                             </div>
-                            <div class="border border-line bg-panel/55 p-4">
-                                <div class="proof-number text-2xl font-black text-white md:text-3xl">500M+</div>
-                                <div class="data-label mt-1 text-[10px] font-bold uppercase tracking-[0.12em] text-txt-secondary">Organic views</div>
+                            <div class="proof-chip">
+                                <div class="proof-kicker">PocketFM / PocketTV</div>
+                                <div class="proof-title">$2M MRR + 500M views</div>
+                                <p class="proof-meta">Scaled content, paid growth, and social distribution.</p>
                             </div>
                         </div>
 
@@ -333,38 +643,32 @@
                     </div>
 
                     <div class="relative hidden min-h-[520px] lg:block reveal" aria-hidden="true">
-                        <div class="absolute inset-8 border border-line bg-panel/70 p-8 world-visual">
-                            <div class="absolute inset-0 scene-grid opacity-20"></div>
-                            <div class="relative z-10 flex h-full flex-col justify-between">
-                                <div>
-                                    <div class="data-label text-[10px] font-bold uppercase tracking-[0.18em] text-txt-muted">Operating thesis</div>
-                                    <div class="mt-5 text-5xl font-black leading-none">Chaos<br>to<br>Scale</div>
-                                    <p class="mt-5 max-w-xs text-base leading-relaxed text-txt-secondary">Operator across capital, revenue, GTM, and teams.</p>
-                                </div>
-                                <div class="space-y-5">
-                                    <div class="grid grid-cols-[110px_1fr] items-center gap-4">
-                                        <div class="data-label text-xs font-bold uppercase tracking-[0.14em] text-[var(--accent)]">Strategy</div>
-                                        <div class="h-px bg-line"></div>
-                                    </div>
-                                    <div class="grid grid-cols-[110px_1fr] items-center gap-4">
-                                        <div class="data-label text-xs font-bold uppercase tracking-[0.14em] text-gold">Growth</div>
-                                        <div class="h-px bg-line"></div>
-                                    </div>
-                                    <div class="grid grid-cols-[110px_1fr] items-center gap-4">
-                                        <div class="data-label text-xs font-bold uppercase tracking-[0.14em] text-green">Build</div>
-                                        <div class="h-px bg-line"></div>
-                                    </div>
-                                </div>
-                                <div class="grid grid-cols-2 gap-3">
-                                    <div class="border border-line bg-ink/70 p-4">
-                                        <div class="proof-number text-3xl font-black text-gold">$20M</div>
-                                        <div class="data-label mt-1 text-[10px] font-bold uppercase tracking-[0.12em] text-txt-secondary">Series A closed</div>
-                                    </div>
-                                    <div class="border border-line bg-ink/70 p-4">
-                                        <div class="proof-number text-3xl font-black text-green">Rs 100Cr+</div>
-                                        <div class="data-label mt-1 text-[10px] font-bold uppercase tracking-[0.12em] text-txt-secondary">AGWP built</div>
-                                    </div>
-                                </div>
+                        <div class="deal-room">
+                            <div class="data-label text-[10px] font-bold uppercase tracking-[0.18em] text-txt-muted">Deal room / operating system</div>
+                            <div class="deal-core">
+                                <div class="deal-core-title">Chaos<br>to<br>Scale</div>
+                                <div class="deal-core-label">Strategy / Growth / Build</div>
+                            </div>
+                            <div class="deal-node capital">
+                                <div class="deal-node-label">Capital</div>
+                                <div class="deal-node-copy">Investor pipeline to closed round</div>
+                            </div>
+                            <div class="deal-node revenue">
+                                <div class="deal-node-label">Revenue</div>
+                                <div class="deal-node-copy">New GTM loops to repeatable MRR</div>
+                            </div>
+                            <div class="deal-node pnl">
+                                <div class="deal-node-label">P&amp;L</div>
+                                <div class="deal-node-copy">Zero to scaled AGWP engine</div>
+                            </div>
+                            <div class="deal-node cadence">
+                                <div class="deal-node-label">Cadence</div>
+                                <div class="deal-node-copy">Teams, dashboards, board rhythm</div>
+                            </div>
+                            <div class="deal-progress">
+                                <span>Frame</span>
+                                <span>Build</span>
+                                <span>Scale</span>
                             </div>
                         </div>
                     </div>
@@ -373,20 +677,20 @@
                 <div class="border-y border-line bg-panel/50 py-5">
                     <div class="grid gap-4 text-sm sm:grid-cols-2 lg:grid-cols-4">
                         <div>
-                            <div class="proof-number text-3xl font-black text-gold">$20M Series A</div>
-                            <p class="mt-1 text-txt-secondary">Fundraise workstreams with CEO.</p>
+                            <div class="proof-number text-3xl font-black text-gold">Mayhem Series A</div>
+                            <p class="mt-1 text-txt-secondary">$20M workstreams: spin-off, VDR, diligence, demos.</p>
                         </div>
                         <div>
-                            <div class="proof-number text-3xl font-black text-green">Rs 100Cr+ AGWP</div>
-                            <p class="mt-1 text-txt-secondary">Cross-sell P&amp;L built from zero.</p>
+                            <div class="proof-number text-3xl font-black text-green">Cross-sell P&amp;L</div>
+                            <p class="mt-1 text-txt-secondary">Rs 100Cr+ AGWP built from zero across 4 products.</p>
                         </div>
                         <div>
-                            <div class="proof-number text-3xl font-black text-[var(--accent)]">$2M MRR</div>
-                            <p class="mt-1 text-txt-secondary">Micro-drama GTM scale-up.</p>
+                            <div class="proof-number text-3xl font-black text-[var(--accent)]">Micro-drama GTM</div>
+                            <p class="mt-1 text-txt-secondary">$2M MRR and 500K DAU in 5 months.</p>
                         </div>
                         <div>
-                            <div class="proof-number text-3xl font-black text-white">500M+ views</div>
-                            <p class="mt-1 text-txt-secondary">PocketTV organic distribution.</p>
+                            <div class="proof-number text-3xl font-black text-white">PocketTV growth</div>
+                            <p class="mt-1 text-txt-secondary">500M+ organic views across social channels.</p>
                         </div>
                     </div>
                 </div>
