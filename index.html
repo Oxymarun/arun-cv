@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARUN SHARMA | Career World</title>
+    <title>Arun Sharma | Executive Operator Portfolio</title>
     <link rel="icon" href="data:,">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://api.fontshare.com">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600;700&amp;family=Source+Sans+3:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
 
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -17,45 +19,30 @@
             theme: {
                 extend: {
                     colors: {
-                        ink: '#050608',
-                        coal: '#0d0f12',
+                        ink: '#07090D',
+                        coal: '#101318',
                         steel: '#151922',
-                        panel: '#1c222d',
-                        line: 'rgba(255,255,255,0.12)',
-                        txt: { primary: '#ffffff', secondary: '#a7b0be', muted: '#687180' },
-                        blue: '#4b7dff',
-                        cyan: '#00d5ff',
-                        gold: '#f6c960',
-                        green: '#55e6a5',
-                        red: '#ff5a70'
+                        panel: '#171B22',
+                        line: 'rgba(255,255,255,0.10)',
+                        txt: { primary: '#F5F7FA', secondary: '#A8B0BD', muted: '#68717F' },
+                        blue: '#4F7CFF',
+                        gold: '#D9A441',
+                        green: '#43B883',
+                        red: '#D95868'
                     },
                     fontFamily: {
-                        sans: ['"Inter Tight"', 'sans-serif']
+                        sans: ['"Source Sans 3"', 'sans-serif'],
+                        display: ['"Satoshi"', '"Source Sans 3"', 'sans-serif'],
+                        mono: ['"IBM Plex Mono"', 'monospace']
                     },
                     keyframes: {
-                        ticker: {
-                            '0%': { transform: 'translateX(0)' },
-                            '100%': { transform: 'translateX(-50%)' }
-                        },
                         pulseLine: {
                             '0%, 100%': { opacity: '0.35', transform: 'scaleX(0.5)' },
                             '50%': { opacity: '1', transform: 'scaleX(1)' }
                         },
-                        scan: {
-                            '0%': { transform: 'translate3d(-30%, -20%, 0) rotate(0deg)' },
-                            '50%': { transform: 'translate3d(15%, 10%, 0) rotate(8deg)' },
-                            '100%': { transform: 'translate3d(-30%, -20%, 0) rotate(0deg)' }
-                        },
-                        orbit: {
-                            '0%': { transform: 'rotate(0deg)' },
-                            '100%': { transform: 'rotate(360deg)' }
-                        }
                     },
                     animation: {
-                        ticker: 'ticker 42s linear infinite',
-                        pulseLine: 'pulseLine 3.5s ease-in-out infinite',
-                        scan: 'scan 5s ease-in-out infinite',
-                        orbit: 'orbit 18s linear infinite'
+                        pulseLine: 'pulseLine 3.5s ease-in-out infinite'
                     }
                 }
             }
@@ -64,8 +51,8 @@
 
     <style>
         :root {
-            --accent: #4b7dff;
-            --accent-soft: rgba(75, 125, 255, 0.16);
+            --accent: #4F7CFF;
+            --accent-soft: rgba(79, 124, 255, 0.14);
             --scene-progress: 0;
         }
 
@@ -74,22 +61,46 @@
         body {
             margin: 0;
             background:
-                linear-gradient(180deg, rgba(5,6,8,0.86), rgba(5,6,8,1) 42%),
-                radial-gradient(circle at 20% 12%, rgba(75,125,255,0.24), transparent 34%),
-                radial-gradient(circle at 88% 18%, rgba(246,201,96,0.14), transparent 28%),
-                #050608;
+                linear-gradient(180deg, rgba(7,9,13,0.94), rgba(7,9,13,1) 48%),
+                radial-gradient(circle at 22% 14%, rgba(79,124,255,0.16), transparent 32%),
+                #07090D;
             color: #fff;
-            font-family: "Inter Tight", sans-serif;
+            font-family: "Source Sans 3", sans-serif;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
-        body[data-world="academy"] { --accent: #00d5ff; --accent-soft: rgba(0,213,255,0.15); }
-        body[data-world="strategy"] { --accent: #f6c960; --accent-soft: rgba(246,201,96,0.16); }
-        body[data-world="venture"] { --accent: #ff5a70; --accent-soft: rgba(255,90,112,0.15); }
-        body[data-world="scale"] { --accent: #55e6a5; --accent-soft: rgba(85,230,165,0.14); }
-        body[data-world="media"] { --accent: #9b7cff; --accent-soft: rgba(155,124,255,0.16); }
-        body[data-world="ai"] { --accent: #ffffff; --accent-soft: rgba(255,255,255,0.11); }
+        h1,
+        h2,
+        h3,
+        .display-type,
+        .nav-brand,
+        .proof-number {
+            font-family: "Satoshi", "Source Sans 3", sans-serif;
+        }
+
+        .metric-type,
+        .data-label {
+            font-family: "IBM Plex Mono", monospace;
+        }
+
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 4px;
+        }
+
+        a:visited { color: inherit; }
+
+        body[data-world="academy"],
+        body[data-world="strategy"],
+        body[data-world="venture"],
+        body[data-world="scale"],
+        body[data-world="media"],
+        body[data-world="ai"] {
+            --accent: #4F7CFF;
+            --accent-soft: rgba(79, 124, 255, 0.14);
+        }
 
         ::selection { background: var(--accent); color: #050608; }
         ::-webkit-scrollbar { width: 8px; }
@@ -107,8 +118,8 @@
 
         .scene-grid {
             background-image:
-                linear-gradient(rgba(255,255,255,0.055) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.055) 1px, transparent 1px);
+                linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
             background-size: 64px 64px;
             mask-image: linear-gradient(to bottom, black, transparent 88%);
         }
@@ -118,6 +129,7 @@
             inset: 0;
             overflow: hidden;
             pointer-events: none;
+            opacity: 0.2;
         }
 
         .motion-field::before,
@@ -128,45 +140,21 @@
             height: 58vw;
             border: 1px solid color-mix(in srgb, var(--accent), transparent 42%);
             transform: rotate(18deg);
-            opacity: 0.22;
+            opacity: 0.06;
+            animation: none;
         }
 
         .motion-field::before {
             top: 8%;
             right: -18%;
-            animation: scan 5s ease-in-out infinite;
+            animation: none;
         }
 
         .motion-field::after {
             bottom: -18%;
             left: -18%;
-            animation: scan 6.5s ease-in-out infinite reverse;
+            animation: none;
         }
-
-        .node {
-            position: absolute;
-            width: 9px;
-            height: 9px;
-            background: var(--accent);
-            box-shadow: 0 0 24px var(--accent);
-            z-index: 0;
-        }
-
-        .node::after {
-            content: "";
-            position: absolute;
-            top: 4px;
-            left: 4px;
-            width: 21vw;
-            height: 1px;
-            background: linear-gradient(90deg, var(--accent), transparent);
-            transform-origin: left center;
-            animation: pulseLine 3.5s ease-in-out infinite;
-        }
-
-        .ticker-wrap { overflow: hidden; white-space: nowrap; }
-        .ticker-track { display: flex; width: max-content; animation: ticker 42s linear infinite; }
-        .ticker-track:hover { animation-play-state: paused; }
 
         .world-shell {
             background:
@@ -180,14 +168,13 @@
         .chapter-card {
             border: 1px solid rgba(255,255,255,0.12);
             background: rgba(13,15,18,0.72);
-            transition: border-color 0.3s ease, transform 0.3s ease, background 0.3s ease;
+            transition: border-color 0.3s ease, background 0.3s ease;
         }
 
         .chapter-card.is-active,
         .chapter-card:hover {
             border-color: var(--accent);
             background: rgba(28,34,45,0.88);
-            transform: translateY(-3px);
         }
 
         .chapter-marker {
@@ -211,7 +198,6 @@
         .proof-card:hover {
             border-color: var(--accent);
             background: linear-gradient(180deg, var(--accent-soft), rgba(255,255,255,0.025));
-            transform: translateY(-6px);
         }
 
         .artifact-card {
@@ -223,13 +209,12 @@
 
         .artifact-card:hover {
             border-color: var(--accent);
-            transform: translateY(-4px);
         }
 
         .reveal {
             opacity: 0;
-            transform: translateY(32px);
-            transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1), transform 0.75s cubic-bezier(0.16,1,0.3,1);
+            transform: translateY(16px);
+            transition: opacity 0.55s cubic-bezier(0.16,1,0.3,1), transform 0.55s cubic-bezier(0.16,1,0.3,1);
         }
 
         .reveal.visible {
@@ -251,11 +236,6 @@
                 linear-gradient(135deg, rgba(255,255,255,0.05), transparent);
         }
 
-        .orbit-ring {
-            border: 1px solid color-mix(in srgb, var(--accent), transparent 35%);
-            animation: orbit 18s linear infinite;
-        }
-
         .mob-menu { display: none; }
         .mob-menu.open { display: flex; }
 
@@ -275,37 +255,35 @@
                 right: 20px;
                 z-index: 70;
                 min-width: 44px;
-                min-height: 40px;
+                min-height: 44px;
             }
             .motion-field::before,
             .motion-field::after {
                 width: 90vw;
                 height: 90vw;
             }
-            .node::after { width: 34vw; }
         }
     </style>
 </head>
 <body data-world="academy">
     <nav class="fixed top-0 z-50 w-full glass-nav border-b border-line">
         <div class="mx-auto flex h-[72px] max-w-[1440px] items-center justify-between px-5 md:px-10">
-            <a href="#top" class="flex items-center gap-3 text-sm font-black uppercase tracking-[0.16em]">
+            <a href="#top" class="nav-brand flex items-center gap-3 text-sm font-black tracking-[0.08em]">
                 <span class="h-2.5 w-2.5 bg-[var(--accent)] shadow-[0_0_20px_var(--accent)]"></span>
-                ARUN.S
+                Arun Sharma
             </a>
 
             <div class="hidden items-center gap-7 text-xs font-bold uppercase tracking-[0.12em] text-txt-secondary md:flex">
-                <a href="#world" class="nav-link py-2 transition-colors hover:text-white">World</a>
                 <a href="#proof" class="nav-link py-2 transition-colors hover:text-white">Proof</a>
-                <a href="#projects" class="nav-link py-2 transition-colors hover:text-white">Projects</a>
+                <a href="#world" class="nav-link py-2 transition-colors hover:text-white">Experience</a>
                 <a href="#profile" class="nav-link py-2 transition-colors hover:text-white">Profile</a>
             </div>
 
             <div class="flex items-center gap-3">
                 <a href="./Arun_IIMC_GTM.pdf?v=20260506" download class="hidden border border-[var(--accent)] bg-[var(--accent)] px-4 py-2 text-xs font-black uppercase tracking-[0.12em] text-ink transition-all hover:bg-white hover:text-ink md:inline-flex">
-                    CV
+                    Download CV
                 </a>
-                <button id="hamburger" class="border border-cyan px-3 py-2 text-white md:hidden" aria-label="Open menu" type="button">
+                <button id="hamburger" class="border border-[var(--accent)] px-3 py-2 text-white md:hidden" aria-label="Open menu" type="button">
                     <span class="block h-0.5 w-5 bg-white"></span>
                     <span class="mt-1.5 block h-0.5 w-5 bg-white"></span>
                     <span class="mt-1.5 block h-0.5 w-5 bg-white"></span>
@@ -314,9 +292,8 @@
         </div>
 
         <div id="mobMenu" class="mob-menu flex-col gap-4 border-t border-line px-5 pb-5 pt-2 text-sm font-bold uppercase tracking-[0.12em] text-txt-secondary md:hidden">
-            <a href="#world" class="hover:text-white">World</a>
             <a href="#proof" class="hover:text-white">Proof</a>
-            <a href="#projects" class="hover:text-white">Projects</a>
+            <a href="#world" class="hover:text-white">Experience</a>
             <a href="#profile" class="hover:text-white">Profile</a>
             <a href="./Arun_IIMC_GTM.pdf?v=20260506" download class="text-[var(--accent)]">Download CV</a>
         </div>
@@ -324,36 +301,51 @@
 
     <main id="top">
         <section class="relative min-h-screen overflow-hidden border-b border-line pt-[72px]">
-            <div class="scene-grid absolute inset-0 opacity-70"></div>
-            <div class="motion-field"></div>
-            <span class="node left-[12%] top-[24%]"></span>
-            <span class="node left-[42%] top-[18%]" style="--accent:#f6c960"></span>
-            <span class="node left-[76%] top-[28%]" style="--accent:#55e6a5"></span>
+            <div class="scene-grid absolute inset-0 opacity-35"></div>
 
             <div class="relative z-10 mx-auto flex min-h-[calc(100vh-72px)] max-w-[1440px] flex-col justify-end px-5 pb-0 pt-12 md:px-10">
                 <div class="grid flex-1 items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
                     <div class="min-w-0 w-full max-w-[calc(100vw_-_40px)] md:max-w-5xl">
-                        <div class="mb-6 flex flex-wrap items-center gap-3 text-[10px] font-black uppercase tracking-[0.18em] text-txt-secondary reveal">
+                        <div class="data-label mb-6 flex flex-wrap items-center gap-3 text-[10px] font-bold uppercase tracking-[0.16em] text-txt-secondary reveal">
                             <span class="inline-flex items-center gap-2 text-green">
                                 <span class="h-2 w-2 bg-green shadow-[0_0_18px_#55e6a5]"></span>
                                 Available now
                             </span>
                             <span class="h-px w-10 bg-[var(--accent)]"></span>
-                            <span>Chief of Staff / Strategy & Growth / 0-to-1</span>
+                            <span>Chief of Staff, Strategy &amp; Growth, Founder's Office</span>
                         </div>
 
-                        <h1 class="max-w-full text-[14.5vw] font-black uppercase leading-[0.78] tracking-normal sm:text-[112px] md:text-[148px] lg:text-[166px] reveal">
+                        <h1 class="max-w-full text-[18vw] font-black leading-[0.84] tracking-normal sm:text-[96px] md:text-[128px] lg:text-[148px] reveal">
                             Arun<br>Sharma
                         </h1>
 
-                        <p class="mt-8 max-w-[300px] text-lg font-light leading-relaxed text-txt-secondary sm:max-w-[520px] md:max-w-2xl md:text-2xl reveal">
-                            I turn messy 0-to-1 bets into structured businesses across venture-build, fintech, gaming, media, and AI.
+                        <p class="mt-8 max-w-[330px] text-lg font-light leading-relaxed text-txt-secondary sm:max-w-[560px] md:max-w-2xl md:text-2xl reveal">
+                            Founder-side operator for messy 0-to-1 growth bets. I turn ambiguous mandates into fundraises, GTM engines, operating cadences, teams, dashboards, and scaled revenue.
                         </p>
+
+                        <div class="mt-7 grid max-w-2xl grid-cols-2 gap-3 reveal sm:grid-cols-4">
+                            <div class="border border-line bg-panel/55 p-4">
+                                <div class="proof-number text-2xl font-black text-gold md:text-3xl">$20M</div>
+                                <div class="data-label mt-1 text-[10px] font-bold uppercase tracking-[0.12em] text-txt-secondary">Series A</div>
+                            </div>
+                            <div class="border border-line bg-panel/55 p-4">
+                                <div class="proof-number text-2xl font-black text-green md:text-3xl">Rs 100Cr+</div>
+                                <div class="data-label mt-1 text-[10px] font-bold uppercase tracking-[0.12em] text-txt-secondary">AGWP from zero</div>
+                            </div>
+                            <div class="border border-line bg-panel/55 p-4">
+                                <div class="proof-number text-2xl font-black text-[var(--accent)] md:text-3xl">$2M</div>
+                                <div class="data-label mt-1 text-[10px] font-bold uppercase tracking-[0.12em] text-txt-secondary">MRR in 5 mo</div>
+                            </div>
+                            <div class="border border-line bg-panel/55 p-4">
+                                <div class="proof-number text-2xl font-black text-white md:text-3xl">500M+</div>
+                                <div class="data-label mt-1 text-[10px] font-bold uppercase tracking-[0.12em] text-txt-secondary">Organic views</div>
+                            </div>
+                        </div>
 
                         <div class="mt-8 flex flex-wrap gap-3 reveal">
                             <a href="mailto:aruns2021@email.iimcal.ac.in" class="inline-flex items-center gap-2 border border-white bg-white px-5 py-3 text-sm font-black uppercase tracking-[0.1em] text-ink transition-transform hover:-translate-y-0.5">
                                 <i class="ph ph-envelope-simple"></i>
-                                Contact
+                                Email Arun
                             </a>
                             <a href="./Arun_IIMC_GTM.pdf?v=20260506" download class="inline-flex items-center gap-2 border border-[var(--accent)] px-5 py-3 text-sm font-black uppercase tracking-[0.1em] text-white transition-all hover:bg-[var(--accent)] hover:text-ink">
                                 <i class="ph ph-download-simple"></i>
@@ -366,53 +358,61 @@
                         </div>
                     </div>
 
-                    <div class="relative hidden min-h-[560px] lg:block reveal">
-                        <div class="absolute inset-8 border border-line world-visual"></div>
-                        <div class="orbit-ring absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2"></div>
-                        <div class="orbit-ring absolute left-1/2 top-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2" style="animation-duration:14s;animation-direction:reverse"></div>
-                        <div class="absolute left-1/2 top-1/2 h-48 w-48 -translate-x-1/2 -translate-y-1/2 border border-[var(--accent)] bg-ink/80 p-6 shadow-[0_0_60px_var(--accent-soft)]">
-                            <div class="text-[10px] font-black uppercase tracking-[0.2em] text-txt-muted">Operating thesis</div>
-                            <div class="mt-5 text-4xl font-black uppercase leading-none">Chaos<br>to<br>Scale</div>
-                            <div class="mt-5 h-1 w-20 bg-[var(--accent)]"></div>
-                        </div>
-                        <div class="absolute right-0 top-16 border border-line bg-ink/80 p-4 text-right">
-                            <div class="text-4xl font-black text-gold">$20M</div>
-                            <div class="text-[10px] font-bold uppercase tracking-[0.16em] text-txt-secondary">Series A</div>
-                        </div>
-                        <div class="absolute bottom-24 left-2 border border-line bg-ink/80 p-4">
-                            <div class="text-4xl font-black text-green">$1.5M</div>
-                            <div class="text-[10px] font-bold uppercase tracking-[0.16em] text-txt-secondary">MRR in 4 mo</div>
-                        </div>
-                        <div class="absolute bottom-6 right-16 border border-line bg-ink/80 p-4 text-right">
-                            <div class="text-4xl font-black text-cyan">20</div>
-                            <div class="text-[10px] font-bold uppercase tracking-[0.16em] text-txt-secondary">IIMC rank</div>
+                    <div class="relative hidden min-h-[520px] lg:block reveal" aria-hidden="true">
+                        <div class="absolute inset-8 border border-line bg-panel/70 p-8 world-visual">
+                            <div class="absolute inset-0 scene-grid opacity-20"></div>
+                            <div class="relative z-10 flex h-full flex-col justify-between">
+                                <div>
+                                    <div class="data-label text-[10px] font-bold uppercase tracking-[0.18em] text-txt-muted">Operating thesis</div>
+                                    <div class="mt-5 text-5xl font-black leading-none">Chaos<br>to<br>Scale</div>
+                                    <p class="mt-5 max-w-xs text-base leading-relaxed text-txt-secondary">Operator across capital, revenue, GTM, and teams.</p>
+                                </div>
+                                <div class="space-y-5">
+                                    <div class="grid grid-cols-[110px_1fr] items-center gap-4">
+                                        <div class="data-label text-xs font-bold uppercase tracking-[0.14em] text-[var(--accent)]">Strategy</div>
+                                        <div class="h-px bg-line"></div>
+                                    </div>
+                                    <div class="grid grid-cols-[110px_1fr] items-center gap-4">
+                                        <div class="data-label text-xs font-bold uppercase tracking-[0.14em] text-gold">Growth</div>
+                                        <div class="h-px bg-line"></div>
+                                    </div>
+                                    <div class="grid grid-cols-[110px_1fr] items-center gap-4">
+                                        <div class="data-label text-xs font-bold uppercase tracking-[0.14em] text-green">Build</div>
+                                        <div class="h-px bg-line"></div>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div class="border border-line bg-ink/70 p-4">
+                                        <div class="proof-number text-3xl font-black text-gold">$20M</div>
+                                        <div class="data-label mt-1 text-[10px] font-bold uppercase tracking-[0.12em] text-txt-secondary">Series A closed</div>
+                                    </div>
+                                    <div class="border border-line bg-ink/70 p-4">
+                                        <div class="proof-number text-3xl font-black text-green">Rs 100Cr+</div>
+                                        <div class="data-label mt-1 text-[10px] font-bold uppercase tracking-[0.12em] text-txt-secondary">AGWP built</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="border-y border-[var(--accent)] bg-[var(--accent-soft)] py-3">
-                    <div class="ticker-wrap">
-                        <div class="ticker-track text-2xl font-black uppercase tracking-[0.08em] md:text-4xl">
-                            <span class="mx-7 text-gold">$20M Series A</span>
-                            <span class="mx-7 text-[var(--accent)]">/</span>
-                            <span class="mx-7 text-green">$1.5M MRR in 4 months</span>
-                            <span class="mx-7 text-[var(--accent)]">/</span>
-                            <span class="mx-7 text-white">&#8377;100+ Cr AGWP</span>
-                            <span class="mx-7 text-[var(--accent)]">/</span>
-                            <span class="mx-7 text-cyan">IIM Calcutta Rank 20</span>
-                            <span class="mx-7 text-[var(--accent)]">/</span>
-                            <span class="mx-7 text-white">500M+ Organic Views</span>
-                            <span class="mx-7 text-[var(--accent)]">/</span>
-                            <span class="mx-7 text-gold">$20M Series A</span>
-                            <span class="mx-7 text-[var(--accent)]">/</span>
-                            <span class="mx-7 text-green">$1.5M MRR in 4 months</span>
-                            <span class="mx-7 text-[var(--accent)]">/</span>
-                            <span class="mx-7 text-white">&#8377;100+ Cr AGWP</span>
-                            <span class="mx-7 text-[var(--accent)]">/</span>
-                            <span class="mx-7 text-cyan">IIM Calcutta Rank 20</span>
-                            <span class="mx-7 text-[var(--accent)]">/</span>
-                            <span class="mx-7 text-white">500M+ Organic Views</span>
-                            <span class="mx-7 text-[var(--accent)]">/</span>
+                <div class="border-y border-line bg-panel/50 py-5">
+                    <div class="grid gap-4 text-sm sm:grid-cols-2 lg:grid-cols-4">
+                        <div>
+                            <div class="proof-number text-3xl font-black text-gold">$20M Series A</div>
+                            <p class="mt-1 text-txt-secondary">Fundraise workstreams with CEO.</p>
+                        </div>
+                        <div>
+                            <div class="proof-number text-3xl font-black text-green">Rs 100Cr+ AGWP</div>
+                            <p class="mt-1 text-txt-secondary">Cross-sell P&amp;L built from zero.</p>
+                        </div>
+                        <div>
+                            <div class="proof-number text-3xl font-black text-[var(--accent)]">$2M MRR</div>
+                            <p class="mt-1 text-txt-secondary">Micro-drama GTM scale-up.</p>
+                        </div>
+                        <div>
+                            <div class="proof-number text-3xl font-black text-white">500M+ views</div>
+                            <p class="mt-1 text-txt-secondary">PocketTV organic distribution.</p>
                         </div>
                     </div>
                 </div>
@@ -420,27 +420,29 @@
         </section>
 
         <section class="relative overflow-hidden border-b border-line bg-coal py-20 md:py-28">
-            <div class="motion-field opacity-50"></div>
-            <div class="relative z-10 mx-auto grid max-w-[1440px] gap-10 px-5 md:px-10 lg:grid-cols-[0.9fr_1.1fr]">
+            <div class="relative z-10 mx-auto grid max-w-[1280px] gap-10 px-5 md:px-10 lg:grid-cols-[0.9fr_1.1fr]">
                 <div class="reveal">
-                    <div class="text-xs font-black uppercase tracking-[0.2em] text-[var(--accent)]">Operating system</div>
-                    <h2 class="mt-5 text-5xl font-black uppercase leading-[0.88] md:text-7xl">Chaos becomes structure.</h2>
+                    <div class="data-label text-xs font-bold uppercase tracking-[0.18em] text-[var(--accent)]">Operating system</div>
+                    <h2 class="mt-5 text-5xl font-black leading-[0.94] md:text-7xl">Chaos to Scale.</h2>
+                    <p class="mt-6 max-w-lg text-lg leading-relaxed text-txt-secondary">A repeatable pattern for turning ambiguous mandates into operating systems founders can trust.</p>
                 </div>
-                <div class="grid gap-4 sm:grid-cols-3">
-                    <div class="proof-card p-6 reveal">
-                        <i class="ph ph-strategy text-3xl text-[var(--accent)]"></i>
-                        <h3 class="mt-8 text-2xl font-black uppercase">Strategy</h3>
-                        <p class="mt-4 text-sm leading-relaxed text-txt-secondary">Frame ambiguous bets, align leadership, define the operating plan.</p>
-                    </div>
-                    <div class="proof-card p-6 reveal">
-                        <i class="ph ph-chart-line-up text-3xl text-gold"></i>
-                        <h3 class="mt-8 text-2xl font-black uppercase">Growth</h3>
-                        <p class="mt-4 text-sm leading-relaxed text-txt-secondary">Turn distribution, content, channels, and retention into compounding loops.</p>
-                    </div>
-                    <div class="proof-card p-6 reveal">
-                        <i class="ph ph-rocket-launch text-3xl text-green"></i>
-                        <h3 class="mt-8 text-2xl font-black uppercase">Build</h3>
-                        <p class="mt-4 text-sm leading-relaxed text-txt-secondary">Create teams, rituals, dashboards, GTM systems, and launch pressure.</p>
+                <div class="border border-line bg-panel/45 reveal">
+                    <div class="grid divide-y divide-line sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+                        <div class="p-6 md:p-8">
+                            <div class="data-label text-xs font-bold uppercase tracking-[0.14em] text-[var(--accent)]">01 / Strategy</div>
+                            <h3 class="mt-6 text-2xl font-black">Frame the mandate</h3>
+                            <p class="mt-4 text-base leading-relaxed text-txt-secondary">Clarify the bet, align leadership, and translate ambiguity into a decision-ready plan.</p>
+                        </div>
+                        <div class="p-6 md:p-8">
+                            <div class="data-label text-xs font-bold uppercase tracking-[0.14em] text-gold">02 / Growth</div>
+                            <h3 class="mt-6 text-2xl font-black">Build the engine</h3>
+                            <p class="mt-4 text-base leading-relaxed text-txt-secondary">Turn channels, content, partnerships, and retention work into repeatable GTM loops.</p>
+                        </div>
+                        <div class="p-6 md:p-8">
+                            <div class="data-label text-xs font-bold uppercase tracking-[0.14em] text-green">03 / Build</div>
+                            <h3 class="mt-6 text-2xl font-black">Install cadence</h3>
+                            <p class="mt-4 text-base leading-relaxed text-txt-secondary">Create teams, dashboards, rituals, and operating pressure so the system keeps scaling.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -450,10 +452,10 @@
             <div class="mx-auto max-w-[1440px] px-5 md:px-10">
                 <div class="mb-16 flex flex-col justify-between gap-5 border-b border-line pb-6 md:flex-row md:items-end">
                     <div class="reveal">
-                        <div class="text-xs font-black uppercase tracking-[0.2em] text-[var(--accent)]">01 / Career world</div>
-                        <h2 class="mt-3 text-5xl font-black uppercase leading-none md:text-7xl">Scroll through the operating arc.</h2>
+                        <div class="data-label text-xs font-bold uppercase tracking-[0.18em] text-[var(--accent)]">01 / Career arc</div>
+                        <h2 class="mt-3 text-5xl font-black leading-none md:text-7xl">From strategy training to 0-to-1 operating roles.</h2>
                     </div>
-                    <p class="max-w-md text-sm font-medium uppercase tracking-[0.12em] text-txt-secondary reveal">Each chapter changes the visual state and expands into proof.</p>
+                    <p class="max-w-md text-base leading-relaxed text-txt-secondary reveal">Six chapters showing how the work expanded from analysis to ownership, capital, revenue, growth, and team building.</p>
                 </div>
 
                 <div class="grid gap-10 lg:grid-cols-[0.78fr_1.22fr]">
@@ -463,13 +465,13 @@
                             <div class="motion-field opacity-60"></div>
                             <div class="relative z-10 flex h-full min-h-[452px] flex-col justify-between">
                                 <div>
-                                    <div id="worldKicker" class="text-xs font-black uppercase tracking-[0.22em] text-[var(--accent)]">Academy</div>
-                                    <h3 id="worldTitle" class="mt-4 text-5xl font-black uppercase leading-[0.9] md:text-6xl">Signal<br>Formation</h3>
-                                    <p id="worldCopy" class="mt-6 max-w-sm text-base leading-relaxed text-txt-secondary">Engineering and MBA signal: NITK, IIM Calcutta, rank, scholarships, competition proof.</p>
+                                    <div id="worldKicker" class="data-label text-xs font-bold uppercase tracking-[0.18em] text-[var(--accent)]">Academic foundation</div>
+                                    <h3 id="worldTitle" class="mt-4 text-5xl font-black leading-[0.92] md:text-6xl">Academic<br>Foundation</h3>
+                                    <p id="worldCopy" class="mt-6 max-w-sm text-base leading-relaxed text-txt-secondary">NITK and IIM Calcutta built the analytical base before the work moved into strategy and operating roles.</p>
                                 </div>
                                 <div>
-                                    <div class="mb-3 flex items-center justify-between text-[10px] font-black uppercase tracking-[0.18em] text-txt-muted">
-                                        <span>Trajectory load</span>
+                                    <div class="data-label mb-3 flex items-center justify-between text-[10px] font-bold uppercase tracking-[0.16em] text-txt-muted">
+                                        <span>Career progress</span>
                                         <span id="worldPercent">00%</span>
                                     </div>
                                     <div class="h-1 w-full bg-white/10">
@@ -481,99 +483,99 @@
                     </div>
 
                     <div id="chapterList" class="space-y-6">
-                        <article class="chapter-card is-active p-6 md:p-8" data-world="academy" data-title="Signal Formation" data-kicker="Academy" data-copy="Engineering and MBA signal: NITK, IIM Calcutta, rank, scholarships, competition proof.">
+                        <article class="chapter-card is-active p-6 md:p-8" data-world="academy" data-title="Academic Foundation" data-kicker="Academic foundation" data-copy="NITK and IIM Calcutta built the analytical base before the work moved into strategy and operating roles.">
                             <div class="flex gap-5">
                                 <span class="chapter-marker mt-2 h-3 w-3 shrink-0"></span>
                                 <div class="w-full">
                                     <div class="flex flex-wrap items-start justify-between gap-3">
                                         <div>
-                                            <div class="text-xs font-black uppercase tracking-[0.16em] text-cyan">2013 - 2021</div>
-                                            <h3 class="mt-2 text-3xl font-black uppercase">NITK + IIM Calcutta</h3>
+                                            <div class="data-label text-xs font-bold uppercase tracking-[0.14em] text-[var(--accent)]">2013 - 2021 / Education</div>
+                                            <h3 class="mt-2 text-3xl font-black">Academic Foundation</h3>
                                         </div>
                                         <div class="flex gap-3">
                                             <img src="./Assets_Logo/NITK.png" alt="NITK" class="h-12 w-12 bg-white object-contain p-2">
                                             <img src="./Assets_Logo/IIM Calcutta.svg" alt="IIM Calcutta" class="h-12 w-12 bg-white object-contain p-2">
                                         </div>
                                     </div>
-                                    <p class="mt-5 max-w-2xl text-txt-secondary">Silver Medalist at NITK, IIM Calcutta Rank 20/480, CAT 99.72%ile, GMAT 99%ile equivalent, national competition signal.</p>
+                                    <p class="mt-5 max-w-2xl text-base leading-relaxed text-txt-secondary">Built the analytical base: NITK Silver Medalist, IIM Calcutta Rank 20/480, CAT 99.72%ile, GMAT 99%ile equivalent, and national competition recognition.</p>
                                 </div>
                             </div>
                         </article>
 
-                        <article class="chapter-card p-6 md:p-8" data-world="strategy" data-title="Structured Strategy" data-kicker="Consulting + analytics" data-copy="Novartis and BCG built the analytical and strategic operating foundation.">
+                        <article class="chapter-card p-6 md:p-8" data-world="strategy" data-title="Strategy and Analytics" data-kicker="Consulting + analytics" data-copy="Novartis and BCG moved the work from analytics into strategic problem solving.">
                             <div class="flex gap-5">
                                 <span class="chapter-marker mt-2 h-3 w-3 shrink-0"></span>
                                 <div class="w-full">
                                     <div class="flex flex-wrap items-start justify-between gap-3">
                                         <div>
-                                            <div class="text-xs font-black uppercase tracking-[0.16em] text-gold">2017 - 2020</div>
-                                            <h3 class="mt-2 text-3xl font-black uppercase">Novartis + BCG</h3>
+                                            <div class="data-label text-xs font-bold uppercase tracking-[0.14em] text-gold">2017 - 2020 / Analytics + consulting</div>
+                                            <h3 class="mt-2 text-3xl font-black">Strategy and Analytics</h3>
                                         </div>
                                         <div class="flex gap-3">
                                             <img src="./Assets_Logo/Novartis-Logo.png" alt="Novartis" class="h-12 w-12 bg-white object-contain p-2">
                                             <img src="./Assets_Logo/BCG_Corporate_Logo.svg.png" alt="BCG" class="h-12 w-12 bg-white object-contain p-2">
                                         </div>
                                     </div>
-                                    <p class="mt-5 max-w-2xl text-txt-secondary">Built scalable physician targeting and CXO dashboards for a $1B+ drug portfolio; shaped post-COVID GCC strategy through CEO interviews and NASSCOM-facing work.</p>
+                                    <p class="mt-5 max-w-2xl text-base leading-relaxed text-txt-secondary">Moved from analytics into strategy: built physician targeting and CXO dashboards for a $1B+ portfolio, then worked on post-COVID GCC strategy through CEO interviews and NASSCOM-facing research.</p>
                                 </div>
                             </div>
                         </article>
 
-                        <article class="chapter-card p-6 md:p-8" data-world="venture" data-title="Venture Build" data-kicker="Gaming + fundraising" data-copy="MPL and Mayhem turned operating leverage into capital, distribution, and product momentum.">
+                        <article class="chapter-card p-6 md:p-8" data-world="venture" data-title="Venture Build and Fundraising" data-kicker="Gaming + fundraising" data-copy="MPL and Mayhem moved the work into venture-building ownership, capital formation, and distribution.">
                             <div class="flex gap-5">
                                 <span class="chapter-marker mt-2 h-3 w-3 shrink-0"></span>
                                 <div class="w-full">
                                     <div class="flex flex-wrap items-start justify-between gap-3">
                                         <div>
-                                            <div class="text-xs font-black uppercase tracking-[0.16em] text-red">2021 - 2023</div>
-                                            <h3 class="mt-2 text-3xl font-black uppercase">MPL / Mayhem Studios</h3>
+                                            <div class="data-label text-xs font-bold uppercase tracking-[0.14em] text-red">2021 - 2023 / Venture build</div>
+                                            <h3 class="mt-2 text-3xl font-black">Venture Build and Fundraising</h3>
                                         </div>
                                         <img src="./Assets_Logo/MPL.jpeg" alt="MPL" class="h-12 w-12 bg-white object-contain p-2">
                                     </div>
-                                    <p class="mt-5 max-w-2xl text-txt-secondary">Led spin-off and $20M Series A with CEO, pitched 150+ global funds, secured Truecaller distribution, managed IPL Fantasy at 1.7M+ DAU.</p>
+                                    <p class="mt-5 max-w-2xl text-base leading-relaxed text-txt-secondary">Stepped into venture-building: helped lead the Mayhem Studios spin-off and $20M Series A, pitched 150+ global funds, secured Truecaller distribution, and managed IPL Fantasy at 1.7M+ DAU.</p>
                                 </div>
                             </div>
                         </article>
 
-                        <article class="chapter-card p-6 md:p-8" data-world="scale" data-title="P&L Machine" data-kicker="Fintech + agent network" data-copy="InsuranceDekho converted channel complexity into a profitable cross-sell business.">
+                        <article class="chapter-card p-6 md:p-8" data-world="scale" data-title="P&amp;L and Distribution Scale" data-kicker="Fintech + agent network" data-copy="InsuranceDekho converted channel complexity into a profitable cross-sell business.">
                             <div class="flex gap-5">
                                 <span class="chapter-marker mt-2 h-3 w-3 shrink-0"></span>
                                 <div class="w-full">
                                     <div class="flex flex-wrap items-start justify-between gap-3">
                                         <div>
-                                            <div class="text-xs font-black uppercase tracking-[0.16em] text-green">2023 - 2025</div>
-                                            <h3 class="mt-2 text-3xl font-black uppercase">InsuranceDekho</h3>
+                                            <div class="data-label text-xs font-bold uppercase tracking-[0.14em] text-green">2023 - 2025 / P&amp;L build</div>
+                                            <h3 class="mt-2 text-3xl font-black">P&amp;L and Distribution Scale</h3>
                                         </div>
                                         <img src="./Assets_Logo/InsuranceDekho.avif" alt="InsuranceDekho" class="h-12 w-12 bg-white object-contain p-2">
                                     </div>
-                                    <p class="mt-5 max-w-2xl text-txt-secondary">Built cross-sell from scratch to &#8377;100+ Cr AGWP and ~15 Cr ARR across 4 high-margin product lines; scaled agent acquisition from 80K to 200K+ agents.</p>
+                                    <p class="mt-5 max-w-2xl text-base leading-relaxed text-txt-secondary">Built a new cross-sell business from zero to Rs 100Cr+ AGWP and around Rs 15Cr ARR across four high-margin product lines, while scaling agent acquisition from 80K to 200K+ agents.</p>
                                 </div>
                             </div>
                         </article>
 
-                        <article class="chapter-card p-6 md:p-8" data-world="media" data-title="Media Growth Engine" data-kicker="Content + MRR" data-copy="PocketFM turned show operations, promo cracking, and content distribution into fast revenue scale.">
+                        <article class="chapter-card p-6 md:p-8" data-world="media" data-title="Media Growth" data-kicker="Content + revenue growth" data-copy="PocketFM turned content operations, paid growth, and organic distribution into fast revenue scale.">
                             <div class="flex gap-5">
                                 <span class="chapter-marker mt-2 h-3 w-3 shrink-0"></span>
                                 <div class="w-full">
                                     <div class="flex flex-wrap items-start justify-between gap-3">
                                         <div>
-                                            <div class="text-xs font-black uppercase tracking-[0.16em]" style="color:#9b7cff">2025 - 2026</div>
-                                            <h3 class="mt-2 text-3xl font-black uppercase">PocketFM</h3>
+                                            <div class="data-label text-xs font-bold uppercase tracking-[0.14em] text-[var(--accent)]">2025 - 2026 / Media growth</div>
+                                            <h3 class="mt-2 text-3xl font-black">Media Growth</h3>
                                         </div>
                                         <img src="./Assets_Logo/PocketFM" alt="PocketFM" class="h-12 w-12 bg-white object-contain p-2">
                                     </div>
-                                    <p class="mt-5 max-w-2xl text-txt-secondary">Scaled micro-drama to $1.5M MRR and 500K DAU in 4 months; led a 40-member team and grew PocketTV social channels to 500M+ organic views.</p>
+                                    <p class="mt-5 max-w-2xl text-base leading-relaxed text-txt-secondary">Scaled the micro-drama business to $2M MRR and 500K DAU in five months, led a 40-member team, and grew PocketTV social channels to 500M+ organic views.</p>
                                 </div>
                             </div>
                         </article>
 
-                        <article class="chapter-card p-6 md:p-8" data-world="ai" data-title="AI-Native Operator" data-kicker="Current layer" data-copy="The next chapter connects fundraising, GTM, AI-native building, and personal projects.">
+                        <article class="chapter-card p-6 md:p-8" data-world="ai" data-title="AI, GTM, and Company Building" data-kicker="Current focus" data-copy="The current focus connects AI-native company building, fundraising, GTM systems, and founder-office work.">
                             <div class="flex gap-5">
                                 <span class="chapter-marker mt-2 h-3 w-3 shrink-0"></span>
                                 <div>
-                                    <div class="text-xs font-black uppercase tracking-[0.16em] text-white">2025 - now</div>
-                                    <h3 class="mt-2 text-3xl font-black uppercase">Physical-AI + Builder Layer</h3>
-                                    <p class="mt-5 max-w-2xl text-txt-secondary">Owned Series A workstreams, VDR, investor demos, board presentations, GTM strategy, OKRs, hackathons, and team build from 0 to 20 across GTM, deployment, HR, and marketing.</p>
+                                    <div class="data-label text-xs font-bold uppercase tracking-[0.14em] text-white">2026 - now / Current focus</div>
+                                    <h3 class="mt-2 text-3xl font-black">AI, GTM, and Company Building</h3>
+                                    <p class="mt-5 max-w-2xl text-base leading-relaxed text-txt-secondary">Now focused on AI-native company building: owning Series A workstreams, VDR, investor demos, board materials, GTM strategy, OKRs, and a 0-to-20 team build across GTM, deployment, HR, and marketing.</p>
                                 </div>
                             </div>
                         </article>
@@ -587,71 +589,36 @@
             <div class="relative z-10 mx-auto max-w-[1440px] px-5 md:px-10">
                 <div class="mb-12 flex flex-col justify-between gap-5 border-b border-line pb-6 md:flex-row md:items-end">
                     <div class="reveal">
-                        <div class="text-xs font-black uppercase tracking-[0.2em] text-[var(--accent)]">02 / Proof cards</div>
-                        <h2 class="mt-3 text-5xl font-black uppercase leading-none md:text-7xl">Numbers with ownership.</h2>
+                        <div class="data-label text-xs font-bold uppercase tracking-[0.18em] text-[var(--accent)]">02 / Selected proof</div>
+                        <h2 class="mt-3 text-5xl font-black leading-none md:text-7xl">Proof across capital, revenue, P&amp;L, and audience.</h2>
                     </div>
-                    <p class="max-w-md text-sm uppercase tracking-[0.12em] text-txt-secondary reveal">Hover or tap into the cards for the operating layer behind the headline.</p>
+                    <p class="max-w-md text-base leading-relaxed text-txt-secondary reveal">Selected outcomes from founder-office, GTM, growth, and strategy roles, with ownership tied to business metrics.</p>
                 </div>
 
                 <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
                     <article class="proof-card p-6 reveal">
-                        <div class="text-[10px] font-black uppercase tracking-[0.2em] text-txt-muted">Capital</div>
-                        <div class="mt-8 text-6xl font-black text-gold">$20M</div>
-                        <h3 class="mt-5 text-xl font-black uppercase">Series A closed</h3>
-                        <p class="mt-4 text-sm leading-relaxed text-txt-secondary">Led spin-off and fundraise with CEO, pitching 150+ global funds and closing Tier 1 investors.</p>
+                        <div class="data-label text-[10px] font-bold uppercase tracking-[0.16em] text-txt-muted">Capital</div>
+                        <div class="proof-number mt-8 text-5xl font-black text-gold md:text-6xl">$20M</div>
+                        <h3 class="mt-5 text-xl font-black">Mayhem Studios fundraise</h3>
+                        <p class="mt-4 text-base leading-relaxed text-txt-secondary">Led spin-off and Series A workstreams with the CEO, including investor pipeline, pitch materials, VDR, diligence, and demos; pitched 150+ global funds and closed investors including Sequoia Capital, Truecaller, Hashed, and Steadview.</p>
                     </article>
                     <article class="proof-card p-6 reveal">
-                        <div class="text-[10px] font-black uppercase tracking-[0.2em] text-txt-muted">Revenue</div>
-                        <div class="mt-8 text-6xl font-black" style="color:#9b7cff">$1.5M</div>
-                        <h3 class="mt-5 text-xl font-black uppercase">MRR scaled</h3>
-                        <p class="mt-4 text-sm leading-relaxed text-txt-secondary">Scaled micro-drama vertical to $1.5M MRR and 500K DAU in 4 months.</p>
+                        <div class="data-label text-[10px] font-bold uppercase tracking-[0.16em] text-txt-muted">Revenue</div>
+                        <div class="proof-number mt-8 text-5xl font-black text-[var(--accent)] md:text-6xl">$2M</div>
+                        <h3 class="mt-5 text-xl font-black">Micro-drama GTM scale-up</h3>
+                        <p class="mt-4 text-base leading-relaxed text-txt-secondary">Early growth lead for PocketFM's micro-drama vertical; drove market entry to $2M MRR and 500K DAU in 5 months across content optimization, paid acquisition, promo testing, and team execution.</p>
                     </article>
                     <article class="proof-card p-6 reveal">
-                        <div class="text-[10px] font-black uppercase tracking-[0.2em] text-txt-muted">P&L</div>
-                        <div class="mt-8 text-6xl font-black text-green">&#8377;100Cr</div>
-                        <h3 class="mt-5 text-xl font-black uppercase">AGWP built</h3>
-                        <p class="mt-4 text-sm leading-relaxed text-txt-secondary">Built cross-sell from zero across 4 high-margin lines with CEO reporting and accelerated promotion.</p>
+                        <div class="data-label text-[10px] font-bold uppercase tracking-[0.16em] text-txt-muted">P&amp;L</div>
+                        <div class="proof-number mt-8 text-5xl font-black text-green md:text-6xl">Rs 100Cr+</div>
+                        <h3 class="mt-5 text-xl font-black">Cross-sell P&amp;L built from zero</h3>
+                        <p class="mt-4 text-base leading-relaxed text-txt-secondary">Built InsuranceDekho's cross-sell and financial services business from scratch to Rs 100Cr+ AGWP and approximately Rs 15Cr ARR across 4 high-margin product lines; led GTM, daily operations, AOP adherence, and monthly margin tracking.</p>
                     </article>
                     <article class="proof-card p-6 reveal">
-                        <div class="text-[10px] font-black uppercase tracking-[0.2em] text-txt-muted">Audience</div>
-                        <div class="mt-8 text-6xl font-black text-cyan">500M+</div>
-                        <h3 class="mt-5 text-xl font-black uppercase">Organic views</h3>
-                        <p class="mt-4 text-sm leading-relaxed text-txt-secondary">Owned PocketTV content marketing across Instagram, YouTube, and Facebook.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects" class="border-b border-line bg-ink py-20 md:py-28">
-            <div class="mx-auto max-w-[1440px] px-5 md:px-10">
-                <div class="mb-12 grid gap-8 md:grid-cols-[0.85fr_1.15fr] md:items-end">
-                    <div class="reveal">
-                        <div class="text-xs font-black uppercase tracking-[0.2em] text-[var(--accent)]">03 / Project shelf</div>
-                        <h2 class="mt-3 text-5xl font-black uppercase leading-none md:text-7xl">Artifacts will live here.</h2>
-                    </div>
-                    <p class="max-w-2xl text-lg leading-relaxed text-txt-secondary reveal">The site is structured to grow beyond the CV. As projects ship, each can become a linkable artifact without redesigning the page.</p>
-                </div>
-
-                <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-                    <article class="artifact-card p-6 reveal">
-                        <i class="ph ph-brain text-3xl text-[var(--accent)]"></i>
-                        <h3 class="mt-8 text-2xl font-black uppercase">AI-native builds</h3>
-                        <p class="mt-4 text-sm leading-relaxed text-txt-secondary">Side projects, widgets, extensions, and automation experiments.</p>
-                    </article>
-                    <article class="artifact-card p-6 reveal">
-                        <i class="ph ph-presentation-chart text-3xl text-gold"></i>
-                        <h3 class="mt-8 text-2xl font-black uppercase">Strategy artifacts</h3>
-                        <p class="mt-4 text-sm leading-relaxed text-txt-secondary">Decks, frameworks, market maps, and operating memos.</p>
-                    </article>
-                    <article class="artifact-card p-6 reveal">
-                        <i class="ph ph-note-pencil text-3xl text-green"></i>
-                        <h3 class="mt-8 text-2xl font-black uppercase">Operator notes</h3>
-                        <p class="mt-4 text-sm leading-relaxed text-txt-secondary">Founder-office, GTM, fundraise, and execution learnings.</p>
-                    </article>
-                    <article class="artifact-card p-6 reveal">
-                        <i class="ph ph-cube-focus text-3xl text-red"></i>
-                        <h3 class="mt-8 text-2xl font-black uppercase">Case studies</h3>
-                        <p class="mt-4 text-sm leading-relaxed text-txt-secondary">Deeper breakdowns of career chapters once source material is ready.</p>
+                        <div class="data-label text-[10px] font-bold uppercase tracking-[0.16em] text-txt-muted">Audience</div>
+                        <div class="proof-number mt-8 text-5xl font-black text-white md:text-6xl">500M+</div>
+                        <h3 class="mt-5 text-xl font-black">PocketTV social growth</h3>
+                        <p class="mt-4 text-base leading-relaxed text-txt-secondary">Led content-marketing GTM for PocketTV across Instagram, YouTube, and Facebook, scaling social channels to 500M+ organic views and $15K/month ad revenue.</p>
                     </article>
                 </div>
             </div>
@@ -660,48 +627,43 @@
         <section id="profile" class="border-b border-line bg-coal">
             <div class="grid lg:grid-cols-2">
                 <div id="education" class="border-b border-line p-6 md:p-12 lg:border-b-0 lg:border-r lg:p-20">
-                    <div class="text-xs font-black uppercase tracking-[0.2em] text-[var(--accent)] reveal">04 / Education</div>
-                    <h2 class="mt-3 text-5xl font-black uppercase leading-none reveal md:text-6xl">Signal stack.</h2>
+                    <div class="data-label text-xs font-bold uppercase tracking-[0.18em] text-[var(--accent)] reveal">03 / Education</div>
+                    <h2 class="mt-3 text-5xl font-black leading-none reveal md:text-6xl">Academic signal.</h2>
                     <div class="mt-12 space-y-10">
                         <div class="reveal">
                             <img src="./Assets_Logo/IIM Calcutta.svg" alt="IIM Calcutta" class="mb-5 h-16 w-16 bg-white object-contain p-2">
-                            <div class="text-xs font-black uppercase tracking-[0.16em] text-txt-muted">2019 - 2021</div>
-                            <h3 class="mt-2 text-3xl font-black uppercase">IIM Calcutta</h3>
+                            <div class="data-label text-xs font-bold uppercase tracking-[0.14em] text-txt-muted">2019 - 2021</div>
+                            <h3 class="mt-2 text-3xl font-black">IIM Calcutta</h3>
                             <p class="mt-3 text-txt-secondary">MBA. Institute Rank 20/480. CAT 99.72%ile. National Runners Up in Accenture B-School Challenge.</p>
                         </div>
                         <div class="reveal">
                             <img src="./Assets_Logo/NITK.png" alt="NITK" class="mb-5 h-16 w-16 bg-white object-contain p-2">
-                            <div class="text-xs font-black uppercase tracking-[0.16em] text-txt-muted">2013 - 2017</div>
-                            <h3 class="mt-2 text-3xl font-black uppercase">NITK Surathkal</h3>
+                            <div class="data-label text-xs font-bold uppercase tracking-[0.14em] text-txt-muted">2013 - 2017</div>
+                            <h3 class="mt-2 text-3xl font-black">NITK Surathkal</h3>
                             <p class="mt-3 text-txt-secondary">B.Tech. Silver Medalist 2/100. Best Outgoing Student. MITACS International Scholarship.</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="p-6 md:p-12 lg:p-20">
-                    <div class="text-xs font-black uppercase tracking-[0.2em] text-[var(--accent)] reveal">05 / Human layer</div>
-                    <h2 class="mt-3 text-5xl font-black uppercase leading-none reveal md:text-6xl">Built outside the job title.</h2>
-                    <p class="mt-8 max-w-xl text-lg leading-relaxed text-txt-secondary reveal">Strategy operator at heart. I take messy, ambiguous bets and turn them into structured, scalable businesses.</p>
-                    <div class="mt-10 grid gap-4 sm:grid-cols-2">
+                    <div class="data-label text-xs font-bold uppercase tracking-[0.18em] text-[var(--accent)] reveal">04 / Human layer</div>
+                    <h2 class="mt-3 text-5xl font-black leading-none reveal md:text-6xl">Built outside the job title.</h2>
+                    <p class="mt-8 max-w-xl text-lg leading-relaxed text-txt-secondary reveal">Outside work, the pattern is the same: endurance, systems, and early-stage company curiosity.</p>
+                    <div class="mt-10 grid gap-4 lg:grid-cols-3">
                         <div class="artifact-card p-5 reveal">
                             <i class="ph ph-mountains text-3xl text-[var(--accent)]"></i>
-                            <h3 class="mt-6 text-lg font-black uppercase">Adventurer</h3>
+                            <h3 class="mt-6 text-lg font-black">Endurance</h3>
                             <p class="mt-3 text-sm text-txt-secondary">Everest Base Camp, three 5000m+ peaks, state-level basketball.</p>
                         </div>
                         <div class="artifact-card p-5 reveal">
-                            <i class="ph ph-book-open-text text-3xl text-gold"></i>
-                            <h3 class="mt-6 text-lg font-black uppercase">Reader</h3>
-                            <p class="mt-3 text-sm text-txt-secondary">Avid non-fiction reader. Growth-X Fellow.</p>
-                        </div>
-                        <div class="artifact-card p-5 reveal">
                             <i class="ph ph-rocket-launch text-3xl text-green"></i>
-                            <h3 class="mt-6 text-lg font-black uppercase">Builder</h3>
+                            <h3 class="mt-6 text-lg font-black">Builder</h3>
                             <p class="mt-3 text-sm text-txt-secondary">Productivity tools, widgets, browser extensions, learning by shipping.</p>
                         </div>
                         <div class="artifact-card p-5 reveal">
                             <i class="ph ph-graph text-3xl text-red"></i>
-                            <h3 class="mt-6 text-lg font-black uppercase">VC-curious</h3>
-                            <p class="mt-3 text-sm text-txt-secondary">Deep interest in Indian VC, founders, and 0-to-1 company building.</p>
+                            <h3 class="mt-6 text-lg font-black">Founder-market lens</h3>
+                            <p class="mt-3 text-sm text-txt-secondary">Indian VC, founders, and 0-to-1 company building through the lens of GTM and operating systems.</p>
                         </div>
                     </div>
                 </div>
@@ -711,12 +673,12 @@
         <footer class="relative overflow-hidden bg-[var(--accent)] px-5 py-20 text-ink md:px-10 md:py-28">
             <div class="absolute left-1/2 top-1/2 w-full -translate-x-1/2 -translate-y-1/2 text-center text-[18vw] font-black uppercase leading-none opacity-10">Build</div>
             <div class="relative z-10 mx-auto max-w-[1200px] text-center">
-                <h2 class="text-5xl font-black uppercase leading-none md:text-8xl">Let's build together.</h2>
-                <p class="mx-auto mt-6 max-w-2xl text-xl font-semibold text-ink/70">Looking for Chief of Staff, Strategy, and 0-to-1 roles at ambitious startups.</p>
+                <h2 class="text-5xl font-black leading-none md:text-8xl">Let's build together.</h2>
+                <p class="mx-auto mt-6 max-w-2xl text-xl font-semibold text-ink/70">Best fit: Chief of Staff, Strategy &amp; Growth, or 0-to-1 roles where fundraising, GTM, and execution meet.</p>
                 <div class="mt-10 flex flex-wrap justify-center gap-3">
                     <a href="mailto:aruns2021@email.iimcal.ac.in" class="inline-flex items-center gap-2 border border-ink bg-ink px-6 py-4 text-sm font-black uppercase tracking-[0.12em] text-white transition-transform hover:-translate-y-0.5">
                         <i class="ph ph-envelope-simple"></i>
-                        Email
+                        Email Arun
                     </a>
                     <a href="./Arun_IIMC_GTM.pdf?v=20260506" download class="inline-flex items-center gap-2 border border-ink px-6 py-4 text-sm font-black uppercase tracking-[0.12em] transition-transform hover:-translate-y-0.5">
                         <i class="ph ph-download-simple"></i>
@@ -788,7 +750,7 @@
 
         chapters.forEach((chapter) => chapterObserver.observe(chapter));
 
-        const sections = Array.from(document.querySelectorAll('section[id], div[id]'));
+        const sections = Array.from(document.querySelectorAll('section[id]'));
         const navLinks = Array.from(document.querySelectorAll('.nav-link'));
 
         window.addEventListener('scroll', () => {
