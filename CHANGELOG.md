@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.4.0] - 2026-05-07
+
+### Changed
+- Reworked the first viewport into a single kinetic hero centered on identity, role fit, and operating rhythm.
+- Removed duplicated proof/company content from the opening screen so PocketFM, InsuranceDekho, and MPL stay in the proof and experience sections.
+- Kept the moving belt as generic operating-language motion and tightened mobile hero sizing/CTA stacking.
+
 ## [0.0.3.0] - 2026-05-07
 
 ### Changed
