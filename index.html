@@ -56,7 +56,10 @@
             --scene-progress: 0;
         }
 
-        html { scroll-padding-top: 88px; }
+        html {
+            color-scheme: dark;
+            scroll-padding-top: 88px;
+        }
 
         body {
             margin: 0;
@@ -320,7 +323,7 @@
                             <span>Chief of Staff, Strategy &amp; Growth, Founder's Office</span>
                         </div>
 
-                        <h1 class="max-w-full text-[18vw] font-black leading-[0.84] tracking-normal sm:text-[96px] md:text-[128px] lg:text-[148px] reveal">
+                        <h1 class="max-w-full text-[18vw] font-black leading-[0.84] tracking-normal sm:text-[96px] md:text-[128px] lg:text-[148px] reveal" aria-label="Arun Sharma">
                             Arun<br>Sharma
                         </h1>
 
@@ -471,7 +474,7 @@
                             <div class="relative z-10 flex h-full min-h-[452px] flex-col justify-between">
                                 <div>
                                     <div id="worldKicker" class="data-label text-xs font-bold uppercase tracking-[0.18em] text-[var(--accent)]">Academic foundation</div>
-                                    <h3 id="worldTitle" class="mt-4 text-5xl font-black leading-[0.92] md:text-6xl">Academic<br>Foundation</h3>
+                                    <h3 id="worldTitle" class="mt-4 text-5xl font-black leading-[0.92] md:text-6xl" aria-label="Academic Foundation">Academic<br>Foundation</h3>
                                     <p id="worldCopy" class="mt-6 max-w-sm text-base leading-relaxed text-txt-secondary">NITK and IIM Calcutta built the analytical base before the work moved into strategy and operating roles.</p>
                                 </div>
                                 <div>
@@ -732,7 +735,9 @@
             chapters.forEach((item) => item.classList.toggle('is-active', item === chapter));
             document.body.dataset.world = chapter.dataset.world || 'academy';
             worldKicker.textContent = chapter.dataset.kicker || '';
-            worldTitle.innerHTML = (chapter.dataset.title || '').replace(' ', '<br>');
+            const title = chapter.dataset.title || '';
+            worldTitle.innerHTML = title.replace(' ', '<br>');
+            worldTitle.setAttribute('aria-label', title);
             worldCopy.textContent = chapter.dataset.copy || '';
             const progress = chapters.length <= 1 ? 100 : Math.round((index / (chapters.length - 1)) * 100);
             worldPercent.textContent = String(progress).padStart(2, '0') + '%';
