@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.0.1.1] - 2026-05-07
+
+### Fixed
+- Removed the Tailwind CDN runtime from the portfolio so production loads the generated local stylesheet without the production warning.
+
 ## [0.0.1.0] - 2026-05-07
 
 ### Added
